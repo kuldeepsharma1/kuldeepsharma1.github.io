@@ -1,0 +1,4 @@
+$('.menu-toggle').on 'click', (e) ->
+  e.preventDefault()
+  target = $(@).toggleClass('open').data('toggle')
+  $("##{target}").toggleClass('open')

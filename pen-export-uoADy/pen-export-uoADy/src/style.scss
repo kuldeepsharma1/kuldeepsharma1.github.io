@@ -1,0 +1,154 @@
+@import "bourbon";
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:700);
+
+* {
+  &,
+  &::before,
+  &::after {
+    @include box-sizing(border-box);
+  }
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  background: #180D22;
+  color: #ffffff;
+  font-family: 'Oswald', 'sans-serif';
+  font-size: 1.4rem;
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+.menu-toggle {
+  @include position(absolute, 20px null null 50%);
+  @include size(61px 33px);
+  margin-left: -30px;
+  padding: 4px 12px;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  z-index: 20;
+  @include transform-origin(center center);
+  @include transition-property(color, border-color, margin-left, width, transform);
+  @include transition-duration(.1s);
+  @include transition-timing-function($ease-out-quad);
+  @include transition-delay(0s, 0s, .2s, .2s, 0s);
+  
+  .label {
+    @include transition-property(opacity);
+    @include transition-duration(.1s);
+    @include transition-timing-function($ease-out-quad);
+    @include transition-delay(.4s);
+  }
+  
+  .close {
+    display: block;
+    @include position(absolute, 6px null null 8px);
+    font-size: 1.8rem;
+    opacity: 0;
+    @include transition-property(opacity, transform);
+    @include transition-duration(.1s);
+    @include transition-timing-function($ease-out-quad);
+    @include transition-delay(0s, 0s);
+  }
+  
+  &:hover {
+    border-color: #ee1848;
+    color: #ee1848;
+  }
+  
+  &.open {
+    margin-left: -16px;
+    border-color: #ee1848;
+    color: #ee1848;
+    @include size(33px);
+    @include transform(rotate(45deg));
+    @include transition-delay(0s, 0s, 0s, 0s, .2s);
+    
+    .label {
+      opacity: 0;
+      @include transition-delay(0);
+    }
+    
+    .close {
+      opacity: 1;
+      @include transform(rotate(-45deg));
+      @include transition-delay(.2s, 0s);
+    }
+    
+    &:hover {
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
+}
+
+.menu {
+  @include position(absolute, 0px 0px 0px 0px);
+  background: rgba(#000000, .4);
+  opacity: 0;
+  z-index: 10;
+  @include transition(opacity .2s $ease-out-quad);
+  pointer-events: none;
+  
+  ul {
+    @include position(absolute, 50% null null 50%);
+    @include transform(translate(-50%, -50%) scale(0.6));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include transition-property(transform);
+    @include transition-duration(.2s);
+    @include transition-timing-function($ease-in-quad);
+    
+    li {
+      position: relative;
+      text-align: center;
+
+      a {
+        padding: 0 12px;
+        color: #ffffff;
+        font-size: 3.6rem;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &::after {
+          @include position(absolute, 50% 0px null auto);
+          @include transform(translate(0, -50%));
+          display: block;
+          content: "";
+          @include size(0% 4px);
+          background: #ee1848;
+          @include transition(width .2s $ease-out-quad);
+        }
+
+        &:hover {
+          &::after {
+            left: 0px;
+            right: auto;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+      
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    
+    ul {
+      @include transform(translate(-50%, -50%) scale(1));
+      @include transition-timing-function($ease-out-quad);
+    }
+  }
+}
