@@ -49,7 +49,15 @@ export default function Home() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-
+      <div>
+      <Image
+        src="/assets/images/kuldeep.jpg"
+        alt="Description of the image"
+        width={500}
+        height={300}
+        className="rounded-full "
+      />
+      </div>
     </main>
 
 
