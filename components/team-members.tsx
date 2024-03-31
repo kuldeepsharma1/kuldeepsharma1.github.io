@@ -13,14 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
+
 import {
   Popover,
   PopoverContent,
@@ -28,6 +21,7 @@ import {
 } from "@/components/ui/popover"
 
 export function DemoTeamMembers() {
+
   return (
     <Card>
       <CardHeader>
@@ -56,40 +50,45 @@ export function DemoTeamMembers() {
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
-              <Command>
-                <CommandInput placeholder="Select new role..." />
-                <CommandList>
-                  <CommandEmpty>No roles found.</CommandEmpty>
-                  <CommandGroup>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view and comment.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and edit.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and manage billing.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
-                        Admin-level access to all resources.
-                      </p>
-                    </CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
+              <div className="py-2 bg-white border border-gray-200 rounded shadow-md">
+                <div className="px-4 py-2">
+                  <p className="font-semibold">Panel Position</p>
+                </div>
+                <div className="border-t border-gray-200">
+                  <div className="p-4">
+                    <label className="inline-flex items-center">
+                      <input
+                        type="radio"
+                        className="form-radio text-primary-500"
+                        name="panelPosition"
+                        value="top"
+                      />
+                      <span className="ml-2">Top</span>
+                    </label>
+                    <label className="inline-flex items-center ml-6">
+                      <input
+                        type="radio"
+                        className="form-radio text-primary-500"
+                        name="panelPosition"
+                        value="bottom"
+                      />
+                      <span className="ml-2">Bottom</span>
+                    </label>
+                    <label className="inline-flex items-center ml-6">
+                      <input
+                        type="radio"
+                        className="form-radio text-primary-500"
+                        name="panelPosition"
+                        value="right"
+                      />
+                      <span className="ml-2">Right</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </PopoverContent>
           </Popover>
+
         </div>
         <div className="flex items-center justify-between space-x-4">
           <div className="flex items-center space-x-4">
@@ -102,6 +101,7 @@ export function DemoTeamMembers() {
               <p className="text-sm text-muted-foreground">p@example.com</p>
             </div>
           </div>
+
           <Popover>
             <PopoverTrigger asChild>
               <Button variant="outline" className="ml-auto">
@@ -110,40 +110,45 @@ export function DemoTeamMembers() {
               </Button>
             </PopoverTrigger>
             <PopoverContent className="p-0" align="end">
-              <Command>
-                <CommandInput placeholder="Select new role..." />
-                <CommandList>
-                  <CommandEmpty>No roles found.</CommandEmpty>
-                  <CommandGroup className="p-1.5">
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Viewer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view and comment.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Developer</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and edit.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Billing</p>
-                      <p className="text-sm text-muted-foreground">
-                        Can view, comment and manage billing.
-                      </p>
-                    </CommandItem>
-                    <CommandItem className="teamaspace-y-1 flex flex-col items-start px-4 py-2">
-                      <p>Owner</p>
-                      <p className="text-sm text-muted-foreground">
-                        Admin-level access to all resources.
-                      </p>
-                    </CommandItem>
-                  </CommandGroup>
-                </CommandList>
-              </Command>
+              <div className="py-2 bg-white border border-gray-200 rounded shadow-md">
+                <div className="px-4 py-2">
+                  <p className="font-semibold">Panel Position</p>
+                </div>
+                <div className="border-t border-gray-200">
+                  <div className="p-4">
+                    <label className="inline-flex items-center">
+                      <input
+                        type="radio"
+                        className="form-radio text-primary-500"
+                        name="panelPosition"
+                        value="top"
+                      />
+                      <span className="ml-2">Top</span>
+                    </label>
+                    <label className="inline-flex items-center ml-6">
+                      <input
+                        type="radio"
+                        className="form-radio text-primary-500"
+                        name="panelPosition"
+                        value="bottom"
+                      />
+                      <span className="ml-2">Bottom</span>
+                    </label>
+                    <label className="inline-flex items-center ml-6">
+                      <input
+                        type="radio"
+                        className="form-radio text-primary-500"
+                        name="panelPosition"
+                        value="right"
+                      />
+                      <span className="ml-2">Right</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </PopoverContent>
           </Popover>
+
         </div>
       </CardContent>
     </Card>

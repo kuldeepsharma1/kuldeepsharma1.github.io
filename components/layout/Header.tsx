@@ -1,5 +1,4 @@
 "use client"
-
 import { CopyIcon } from "@radix-ui/react-icons"
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
@@ -17,6 +16,17 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ModeToggle } from "../ModeToggle"
 
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+import { DemoNotifications } from "../notifications";
 export default function Header() {
     const [currentUrl, setCurrentUrl] = useState<string>('');
     const [copied, setCopied] = useState<boolean>(false);
@@ -91,12 +101,12 @@ export default function Header() {
                                             <CopyIcon className="h-4 w-4" />
                                         </Button>
                                     )}
-                                   
+
 
                                 </div>
                                 {copied && (
-                                        <p className="text-sm text-gray-500 mt-2">URL copied to clipboard.</p>
-                                    )}
+                                    <p className="text-sm text-gray-500 mt-2">URL copied to clipboard.</p>
+                                )}
                                 <DialogFooter className="sm:justify-start">
                                     <DialogClose asChild>
                                         <Button type="button" variant="secondary">
@@ -107,26 +117,36 @@ export default function Header() {
                             </DialogContent>
                         </Dialog>
 
-                        <button
-                            type="button"
-                            className="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700   "
-                        >
-                            <span className="sr-only">View notifications</span>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                            </svg>
-
-                        </button>
-
-                        <div className="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white rounded divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl" id="notification-dropdown">
+                        <Sheet >
+                            <SheetTrigger asChild>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 hover:fill-current cursor-pointer focus:fill-current">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                                </svg>
+                            </SheetTrigger>
+                            <SheetContent  className="w-full ">
+                                <SheetHeader>
+                                    <SheetTitle>Edit profile</SheetTitle>
+                                    <SheetDescription>
+                                        Make changes to your profile here. Click save when you&apos;re done.
+                                    </SheetDescription>
+                                </SheetHeader>
+                               <DemoNotifications/>
+                                <SheetFooter>
+                                    <SheetClose asChild>
+                                        <Button type="submit">Save changes</Button>
+                                    </SheetClose>
+                                </SheetFooter>
+                            </SheetContent>
+                        </Sheet>
+                        <div className="hidden overflow-hidden z-50 my-4 max-w-sm text-base list-none bg-white divide-y divide-gray-100 shadow-lg dark:divide-gray-600 dark:bg-gray-700 rounded-xl" id="notification-dropdown">
                             <div className="block py-2 px-4 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-600 dark:text-gray-300">
                                 Notifications
                             </div>
                             <div>
                                 <a href="#" className="flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600">
                                     <div className="flex-shrink-0">
-                                        <img className="w-11 h-11 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" />
+                                        {/* <img className="w-11 h-11 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png" alt="Bonnie Green avatar" /> */}
                                         <div className="flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 dark:border-gray-700">
 
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -164,5 +184,7 @@ export default function Header() {
         </div>
     )
 }
+
+
 
 
