@@ -28,7 +28,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
       <div className="flex justify-center">
-        <h1 className="text-2xl font-bold text-center">Welcome to Kuldeepsharma Home</h1>
+        <h1 className="text-2xl font-bold text-center">Welcome to Kuldeepsharma Homes</h1>
       </div>
 
 
