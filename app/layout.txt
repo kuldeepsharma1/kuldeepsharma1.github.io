@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
-import Footer from "@/components/custom/Footer/Footer";
-import Header from "@/components/custom/Header/Header";
-import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
+import Sidebar from "@/components/layout/Sidebar";
 
 
-
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,23 +28,28 @@ export default function RootLayout({
           href="/assets/seo/apple-touch-icon.png"
         />
       </head>
-      <body className="font-roboto max-w-7xl mx-auto">
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <header className="px-2 pt-2.5" >
-            <Header />
-          </header>
-          <main className="">
+          <div>
+            <aside>
+              <Sidebar />
+            </aside>
+            <header >
+              <Header />
+            </header>
+          </div>
+
+          <main className=" md:ml-24 h-auto pt-20">
             {children}
           </main>
-          <footer>
+          <footer className="md:ml-20">
             <Footer />
           </footer>
-          <Toaster/>
         </ThemeProvider>
       </body>
     </html>

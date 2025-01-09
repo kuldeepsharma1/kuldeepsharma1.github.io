@@ -64,6 +64,19 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
+  @font-face {
+    font-family: "Roboto";
+    font-weight: 1 1000;
+    src: url("/public/fonts/Roboto.ttf")format('truetype');
+}
+
+@font-face {
+    font-family: "RobotoItalic";
+    font-weight: 1 1000;
+    font-style: italic;
+    src: url("/public/fonts/Robotoitalic.ttf")format('truetype');
+}
+
 }
  
 @layer base {
