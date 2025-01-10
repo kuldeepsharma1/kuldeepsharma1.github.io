@@ -40,10 +40,12 @@ export default function RootLayout({
           <main className="">
             {children}
           </main>
+          <Toaster/>
           <footer>
             <Footer />
+              
           </footer>
-          <Toaster/>
+      
         </ThemeProvider>
       </body>
     </html>

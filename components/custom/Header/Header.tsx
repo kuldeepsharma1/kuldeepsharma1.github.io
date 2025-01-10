@@ -27,7 +27,7 @@ export default function Header() {
         </Link>
         <div>
           <div className="flex items-center space-x-2">
-            <button className="px-4 py-2 flex items-center border border-white rounded-full ">
+            <a href="mailto://k4kuldeep108@gmail.com" target="_blank" className="px-4 py-2 flex items-center border border-white rounded-full ">
               Let&apos;s Talk{" "}
               <span>
                 <svg
@@ -45,7 +45,7 @@ export default function Header() {
                   />
                 </svg>
               </span>
-            </button>
+            </a>
             {/* menu toggle */}
             <button
               onClick={toggleMenu}
@@ -235,7 +235,7 @@ export default function Header() {
               <div>
                 <ul className="flex items-center space-x-2">
                   <li>
-                    <Link
+                    <Link onClick={() => handleNavigation("/")}
                       target="_blank"
                       href={"https://github.com/kuldeepsharma1"}
                     >
@@ -255,7 +255,7 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link
+                    <Link  onClick={() => handleNavigation("/")}
                       target="_blank"
                       href={"https://www.linkedin.com/in/kuldeepsharma22/"}
                     >
@@ -276,7 +276,7 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link
+                    <Link onClick={() => handleNavigation("/")}
                       target="_blank"
                       href={"https://www.instagram.com/kuldeep_sharma_2022/"}
                     >
@@ -297,7 +297,7 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link target="_blank" href={"https://x.com/kuldeepit1"}>
+                    <Link onClick={() => handleNavigation("/")} target="_blank" href={"https://x.com/kuldeepit1"}>
                       <svg
                         className="size-6"
                         aria-hidden="true"
