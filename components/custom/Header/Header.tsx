@@ -62,8 +62,8 @@ export default function Header() {
     });
   }, [headerRef]);
   return (
-    <div className="" >
-      <div className="w-full flex flex-row items-center justify-between ">
+    <div className="relative" >
+      <div className="w-full flex items-center justify-between px-4 py-2 ">
         <Link onClick={() => handleNavigation("/")} href={'/'}>
           <h1 className="text-4xl font-semibold ">
             <span className={`${isMenuOpen ? "opacity-70" : "opacity-100"}`}>Kul</span>
@@ -133,11 +133,82 @@ export default function Header() {
       </div>
       {/* hamburger opn content */}
       <div ref={menuRef}
-        className={` ${isMenuOpen ? "" : "hidden"} pt-5  h-screen `}
-      // className={`fixed top-0 left-0 w-full h-screen bg-black z-50 transform -translate-y-full opacity-0`}
+        // className={` ${isMenuOpen ? "" : "hidden"} pt-5  h-screen `}
+        className={`fixed top-0 left-0  w-full h-screen bg-white dark:bg-black z-50 transform -translate-y-full ${isMenuOpen ? "translate-y-0" : ""
+          }`}
+        style={{ overflowY: "auto" }}
       >
-        <div >
-          <ul ref={menuItemsRef} className="space-y-4 ">
+       <div className="max-w-7xl mx-auto ">
+       <div>
+          <div className=" flex items-center justify-between px-4 py-2 ">
+            <Link onClick={() => handleNavigation("/")} href={'/'}>
+              <h1 className="text-4xl font-semibold ">
+                <span className={`${isMenuOpen ? "opacity-70" : "opacity-100"}`}>Kul</span>
+                <span className="opacity-100">deep.</span>
+              </h1>
+            </Link>
+            <div>
+              <div className="flex items-center space-x-2">
+                <a href="mailto://k4kuldeep108@gmail.com" target="_blank" className="px-4 py-2 flex items-center border border-black dark:border-white rounded-full ">
+                  Let&apos;s Talk{" "}
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </a>
+                {/* menu toggle */}
+                <button
+                  onClick={toggleMenu}
+                  className="px-4 py-2 border border-black dark:border-white rounded-full "
+                >
+                  {isMenuOpen ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18 18 6M6 6l12 12"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 9h16.5m-16.5 6.75h16.5"
+                      />
+                    </svg>
+                  )} <span className="sr-only">Menu Toggle</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul ref={menuItemsRef} className="space-y-4 px-4 ">
             <li>
               <Link
                 onClick={() => handleNavigation("/")}
@@ -272,7 +343,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className="border-t mt-2 py-2 border-black/30 dark:border-white/30">
+        <div className="border-t mt-2 px-4 py-2 border-black/30 dark:border-white/30">
           <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between pt-5 items-center">
             <div className="flex flex-row sm:flex-col justify-between w-full sm:w-auto sm:h-20 ">
               <div>
@@ -362,12 +433,13 @@ export default function Header() {
               <div>
                 <p className="text-black/80 dark:text-white/80">Stay connected w/ me.</p>
               </div>
-              <div className="pt-4 pb-10 sm:pb-0">
+              <div className="pt-4 pb-10">
                 <ConnectForm />
               </div>
             </div>
           </div>
         </div>
+       </div>
       </div>
     </div>
   );
