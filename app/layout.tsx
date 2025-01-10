@@ -37,7 +37,7 @@ export default function RootLayout({
           <header className="px-2 pt-2.5" >
             <Header />
           </header>
-          <main className="">
+          <main className="min-h-screen">
             {children}
           </main>
           <Toaster/>
