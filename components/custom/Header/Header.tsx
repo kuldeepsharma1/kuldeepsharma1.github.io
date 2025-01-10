@@ -1,12 +1,16 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ConnectForm from "./Form/ConnectForm";
+import gsap from 'gsap'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const router = useRouter();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const menuItemsRef = useRef<HTMLUListElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev: boolean) => !prev);
@@ -16,10 +20,51 @@ export default function Header() {
     setIsMenuOpen(false); // Close the menu
     router.push(url); // Navigate to the desired URL
   };
+  useEffect(() => {
+    if (menuRef.current && menuItemsRef.current) {
+      const menuItems = menuItemsRef.current.querySelectorAll("li");
+
+      if (isMenuOpen) {
+        gsap.timeline()
+          .to(menuRef.current, {
+            duration: 0.5,
+            opacity: 1,
+            y: 0,
+            display: "block",
+            ease: "power3.out",
+          })
+          .fromTo(
+            menuItems,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, stagger: 0.1, ease: "power3.out" }
+          );
+      } else {
+        gsap.timeline()
+          .to(menuItems, {
+            opacity: 0,
+            y: 20,
+            stagger: 0.1,
+            ease: "power3.in",
+          })
+          .to(menuRef.current, {
+            duration: 0.5,
+            opacity: 0,
+            y: -20,
+            display: "none",
+            ease: "power3.in",
+          });
+      }
+    }
+  }, [isMenuOpen]);
+  useEffect(() => {
+    gsap.from(headerRef.current, {
+ 
+    });
+  }, [headerRef]);
   return (
-    <div className="">
-      <div className="w-full flex flex-row items-center justify-between ">
-        <Link  onClick={() => handleNavigation("/")} href={'/'}>
+    <div  className="" >
+      <div  className="w-full flex flex-row items-center justify-between ">
+        <Link onClick={() => handleNavigation("/")} href={'/'}>
           <h1 className="text-4xl font-semibold ">
             <span className={`${isMenuOpen ? "opacity-70" : "opacity-100"}`}>Kul</span>
             <span className="opacity-100">deep.</span>
@@ -87,11 +132,12 @@ export default function Header() {
         </div>
       </div>
       {/* hamburger opn content */}
-      <div
-        className={` ${isMenuOpen ? "" : "hidden"} pt-5  h-screen`}
+      <div ref={menuRef}
+        className={` ${isMenuOpen ? "" : "hidden"} pt-5  h-screen `}
+      // className={`fixed top-0 left-0 w-full h-screen bg-black z-50 transform -translate-y-full opacity-0`}
       >
-        <div>
-          <ul className="space-y-4 ">
+        <div >
+          <ul ref={menuItemsRef} className="space-y-4 ">
             <li>
               <Link
                 onClick={() => handleNavigation("/")}
@@ -127,7 +173,7 @@ export default function Header() {
             </li>
             <li>
               <Link
-               onClick={() => handleNavigation("/about")}
+                onClick={() => handleNavigation("/about")}
                 href="/about"
                 className="flex flex-row items-center justify-between hover:opacity-80 py-2 rounded-md "
               >
@@ -160,7 +206,7 @@ export default function Header() {
             </li>
             <li>
               <Link
-               onClick={() => handleNavigation("/works")}
+                onClick={() => handleNavigation("/works")}
                 href="/works"
                 className="flex flex-row items-center justify-between hover:opacity-80 opacity-100 py-2 rounded-md "
               >
@@ -193,7 +239,7 @@ export default function Header() {
             </li>
             <li>
               <Link
-               onClick={() => handleNavigation("/insights")}
+                onClick={() => handleNavigation("/insights")}
                 href="/insights"
                 className="flex flex-row items-center justify-between hover:opacity-80 py-2 rounded-md "
               >
@@ -226,8 +272,8 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className="border-t mt-2 py-2 border-white/30">
-          <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between pt-5 items-center">
+        <div  className="border-t mt-2 py-2 border-white/30">
+          <div  className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between pt-5 items-center">
             <div className="flex flex-row sm:flex-col justify-between w-full sm:w-auto sm:h-20 ">
               <div>
                 <p className="text-white/80">Follow me.</p>
@@ -255,7 +301,7 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link  onClick={() => handleNavigation("/")}
+                    <Link onClick={() => handleNavigation("/")}
                       target="_blank"
                       href={"https://www.linkedin.com/in/kuldeepsharma22/"}
                     >
