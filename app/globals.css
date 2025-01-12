@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -33,6 +33,11 @@
     --ring: 240 10% 3.9%;
  
     --radius: 0.5rem;
+
+    --selection-bg-light: hsl(0 0% 100%);
+    --selection-color-light: hsl(240 10% 3.9%);
+    --selection-bg-dark: hsl(240 10% 3.9%);
+    --selection-color-dark: hsl(0 0% 98%);
   }
  
   .dark {
@@ -64,21 +69,32 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
   }
+
   @font-face {
     font-family: "Roboto";
     font-weight: 1 1000;
-    src: url("/public/fonts/Roboto.ttf")format('truetype');
-}
+    src: url("/public/assets/fonts/Roboto.ttf") format('truetype');
+  }
 
-@font-face {
+  @font-face {
     font-family: "RobotoItalic";
     font-weight: 1 1000;
     font-style: italic;
-    src: url("/public/fonts/Robotoitalic.ttf")format('truetype');
+    src: url("/public/assets/fonts/Robotoitalic.ttf") format('truetype');
+  }
 }
 
+/* Add custom selection styles */
+::selection {
+  background-color: var(--selection-bg-dark);
+  color: var(--selection-color-dark);
 }
- 
+
+.dark ::selection {
+  background-color: var(--selection-bg-light);
+  color: var(--selection-color-light);
+}
+
 @layer base {
   * {
     @apply border-border;

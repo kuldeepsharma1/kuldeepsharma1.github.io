@@ -28,25 +28,26 @@ export default function RootLayout({
           href="/assets/seo/apple-touch-icon.png"
         />
       </head>
-      <body className="font-roboto max-w-7xl mx-auto">
+      <body className="font-roboto ">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <header className="px-2 pt-2.5" >
-            <Header />
-          </header>
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Toaster/>
-          <footer>
-            <Footer />
-              
-          </footer>
-      
+          <div className="max-w-7xl mx-auto">
+            <header className="px-2 pt-2.5 " >
+              <Header />
+            </header>
+            <main className="min-h-screen ">
+              {children}
+            </main>
+            <Toaster />
+            <footer>
+              <Footer />
+            </footer>
+          </div>
+
         </ThemeProvider>
       </body>
     </html>
