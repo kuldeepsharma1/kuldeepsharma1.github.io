@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import ConnectForm from "./Form/ConnectForm";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useScrollDirection } from '@/hooks/useScrollDirection';
-
+import { ShimmerButton } from "./ShimmerButton";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const router = useRouter();
@@ -90,16 +90,14 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <div 
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
-        scrollDirection === 'down' && !isMenuOpen 
-          ? '-translate-y-full' 
-          : 'translate-y-0'
-      } ${
-        !isAtTop && !isMenuOpen
+    <div
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrollDirection === 'down' && !isMenuOpen
+        ? '-translate-y-full'
+        : 'translate-y-0'
+        } ${!isAtTop && !isMenuOpen
           ? 'bg-white/80 dark:bg-black/80 backdrop-blur-sm shadow-sm'
           : ''
-      }`}
+        }`}
     >
       {/* Main Header */}
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2">
@@ -116,12 +114,14 @@ export default function Header() {
           </h1>
         </Link>
         <div>
+
+          {/* className="px-4 py-2  border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" */}
+
           <div className="flex items-center space-x-2">
-            <a
-              href="mailto://k4kuldeep108@gmail.com"
-              target="_blank"
-              className="px-4 py-2 flex items-center border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
-            >
+            <ShimmerButton>  <a
+              href="mailto:k4kuldeep108@gmail.com"
+              target="_blank" className="flex z-50 items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+
               Let&apos;s Talk{" "}
               <span>
                 <svg
@@ -140,6 +140,9 @@ export default function Header() {
                 </svg>
               </span>
             </a>
+            </ShimmerButton>
+
+
             {/* menu toggle */}
             <button
               onClick={toggleMenu}
@@ -184,9 +187,8 @@ export default function Header() {
       {/* Modal Menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 left-0 w-full min-h-screen bg-white dark:bg-black opacity-0 pointer-events-none ${
-          isMenuOpen ? 'pointer-events-auto' : ''
-        }`}
+        className={`fixed top-0 left-0 w-full min-h-screen bg-white dark:bg-black opacity-0 pointer-events-none ${isMenuOpen ? 'pointer-events-auto' : ''
+          }`}
         style={{
           transform: 'translateY(-100%)',
           display: isMenuOpen ? 'block' : 'none'
@@ -209,12 +211,11 @@ export default function Header() {
           </Link>
 
           <div className="flex items-center space-x-2">
-            <a
-              href="mailto://k4kuldeep108@gmail.com"
-              target="_blank"
-              className="px-4 py-2 flex items-center border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
-            >
-              Let&apos;s Talk
+            <ShimmerButton>  <a
+              href="mailto:k4kuldeep108@gmail.com"
+              target="_blank" className="flex z-50 items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+
+              Let&apos;s Talk{" "}
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +233,7 @@ export default function Header() {
                 </svg>
               </span>
             </a>
-
+            </ShimmerButton>
             <button
               onClick={toggleMenu}
               className="px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"

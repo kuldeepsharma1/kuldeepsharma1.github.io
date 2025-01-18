@@ -1,5 +1,4 @@
 "use client"
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -10,11 +9,12 @@ import {
     FormControl,
     FormField,
     FormItem,
-    FormLabel,
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { ToastAction } from "@/components/ui/toast"
+import Link from "next/link"
+
 
 const FormSchema = z.object({
     username: z.string().min(2, {
@@ -23,6 +23,7 @@ const FormSchema = z.object({
 })
 
 export default function ConnectForm() {
+
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -33,9 +34,9 @@ export default function ConnectForm() {
     function onSubmit(data: z.infer<typeof FormSchema>) {
         toast({
             variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "There was a problem with your request.",
-          action: <ToastAction altText="Try again">Try again</ToastAction>,
+            title: "Uh oh! Something went wrong.",
+            description: "There was a problem with our end.",
+            action: <ToastAction altText="Try again"><Link  href="/contact">Contact Me</Link></ToastAction>,
         })
     }
     return (
