@@ -2,10 +2,10 @@
 import TabSwitch from "@/components/custom/TabSwitch/TabSwitch";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MoveRight, PhoneCall,User } from "lucide-react";
+import { MoveRight, PhoneCall, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Carousel,
   CarouselApi,
@@ -54,12 +54,18 @@ export default function Home() {
   return (
     <div className="pt-10">
 
-      <Ripple/>
       <section>
         <div className="w-full">
           <div className="container mx-auto">
             <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
-              <div>
+              <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+
+               
+                  <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-white">
+                    Ripple
+                  </p>
+                  <Ripple />
+              
                 <Button variant="secondary" size="sm" className="gap-4">
                   Read our launch article <MoveRight className="w-4 h-4" />
                 </Button>

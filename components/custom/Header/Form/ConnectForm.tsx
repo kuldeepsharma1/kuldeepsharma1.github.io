@@ -13,7 +13,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { ToastAction } from "@/components/ui/toast"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useHeaderStore } from "@/store/store"
 
 
 const FormSchema = z.object({
@@ -23,7 +24,12 @@ const FormSchema = z.object({
 })
 
 export default function ConnectForm() {
-
+    const { setIsMenuOpen } = useHeaderStore();
+    const router = useRouter();
+    const handleNavigation = (url: string) => {
+        setIsMenuOpen(false);
+        router.push(url);
+    };
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: {
@@ -36,7 +42,7 @@ export default function ConnectForm() {
             variant: "destructive",
             title: "Uh oh! Something went wrong.",
             description: "There was a problem with our end.",
-            action: <ToastAction altText="Try again"><Link  href="/contact">Contact Me</Link></ToastAction>,
+            action: <ToastAction altText="Try again" onClick={() => handleNavigation('/contact')}>Contact Me</ToastAction>,
         })
     }
     return (

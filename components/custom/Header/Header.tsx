@@ -1,92 +1,102 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import ConnectForm from "./Form/ConnectForm";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { ShimmerButton } from "./ShimmerButton";
+import { useHeaderStore } from "@/store/store";
+
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const { isMenuOpen, toggleMenu, setIsMenuOpen } = useHeaderStore();
   const router = useRouter();
   const menuRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLUListElement>(null);
   const socialIconsRef = useRef<HTMLUListElement>(null);
   const connectFormRef = useRef<HTMLDivElement>(null);
   const { scrollDirection, isAtTop } = useScrollDirection();
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prev: boolean) => !prev);
-  };
+  const [isAnimating, setIsAnimating] = useState(false);
+  const timelineRef = useRef<GSAPTimeline>();
 
   const handleNavigation = (url: string) => {
     setIsMenuOpen(false); // Close the menu
     router.push(url); // Navigate to the desired URL
   };
-  useGSAP(() => {
-    if (
-      menuItemsRef.current &&
-      socialIconsRef.current &&
-      connectFormRef.current
-    ) {
-      const menuItems = Array.from(menuItemsRef.current.querySelectorAll("li"));
-      const socialIcons = Array.from(
-        socialIconsRef.current.querySelectorAll("li")
-      );
 
-      if (isMenuOpen) {
-        gsap
-          .timeline()
-          .to(menuRef.current, {
-            duration: 0.5,
-            opacity: 1,
-            y: 0,
-            display: "block",
-            ease: "power3.out",
-          })
-          .fromTo(
-            menuItems,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, stagger: 0.1, ease: "power3.out" }
-          )
-          .fromTo(
-            socialIcons,
-            { opacity: 0, x: -20 },
-            { opacity: 1, x: 0, stagger: 0.1, ease: "power3.out" },
-            "-=0.5"
-          )
-          .fromTo(
-            connectFormRef.current,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-            "-=0.3"
-          );
-      } else {
-        gsap
-          .timeline()
-          .to([socialIcons, connectFormRef.current], {
-            opacity: 0,
-            y: 20,
-            duration: 0.3,
-            ease: "power3.in",
-          })
-          .to(menuItems, {
-            opacity: 0,
-            y: 20,
-            stagger: 0.1,
-            ease: "power3.in",
-          })
-          .to(menuRef.current, {
-            duration: 0.5,
-            opacity: 0,
-            y: -20,
-            display: "none",
-            ease: "power3.in",
-          });
-      }
+  // Debounced toggle handler
+  const handleToggle = useCallback(() => {
+    if (isAnimating) return; // Prevent toggle while animating
+    setIsAnimating(true);
+    toggleMenu();
+  }, [isAnimating, toggleMenu]);
+
+  useGSAP(() => {
+    if (!menuRef.current || !menuItemsRef.current || !socialIconsRef.current || !connectFormRef.current) return;
+
+    // Kill previous timeline if exists
+    if (timelineRef.current) {
+      timelineRef.current.kill();
     }
+
+    const menuItems = gsap.utils.toArray(menuItemsRef.current.querySelectorAll("li"));
+    const socialIcons = gsap.utils.toArray(socialIconsRef.current.querySelectorAll("li"));
+    
+    // Create new timeline
+    timelineRef.current = gsap.timeline({
+      paused: true,
+      onComplete: () => setIsAnimating(false),
+      onReverseComplete: () => setIsAnimating(false),
+    });
+
+    if (isMenuOpen) {
+      timelineRef.current
+        .set(menuRef.current, { display: "block" })
+        .fromTo(menuRef.current, 
+          { opacity: 0, y: -20 },
+          { duration: 0.3, opacity: 1, y: 0, ease: "power2.out" }
+        )
+        .fromTo(menuItems, 
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, stagger: 0.03, ease: "power2.out" },
+          "-=0.1"
+        )
+        .fromTo(socialIcons, 
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, stagger: 0.03, ease: "power2.out" },
+          "-=0.2"
+        )
+        .fromTo(connectFormRef.current, 
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+          "-=0.1"
+        )
+        .play();
+    } else if (timelineRef.current) {
+      timelineRef.current
+        .clear()
+        .fromTo([connectFormRef.current, ...socialIcons], 
+          { opacity: 1, y: 0 },
+          { opacity: 0, y: 10, duration: 0.2, ease: "power2.in" }
+        )
+        .fromTo(menuItems, 
+          { opacity: 1, y: 0 },
+          { opacity: 0, y: 10, stagger: 0.02, ease: "power2.in" },
+          "-=0.1"
+        )
+        .to(menuRef.current, 
+          { duration: 0.3, opacity: 0, y: -20, ease: "power2.in" }
+        )
+        .set(menuRef.current, { display: "none" })
+        .play();
+    }
+
+    return () => {
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+      }
+    };
   }, [isMenuOpen]);
 
   return (
@@ -145,8 +155,9 @@ export default function Header() {
 
             {/* menu toggle */}
             <button
-              onClick={toggleMenu}
-              className="px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+              onClick={handleToggle}
+              disabled={isAnimating}
+              className={`px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors ${isAnimating ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isMenuOpen ? (
                 <svg
@@ -187,10 +198,9 @@ export default function Header() {
       {/* Modal Menu */}
       <div
         ref={menuRef}
-        className={`fixed top-0 left-0 w-full min-h-screen bg-white dark:bg-black opacity-0 pointer-events-none ${isMenuOpen ? 'pointer-events-auto' : ''
+        className={`fixed  top-0 left-0 w-full min-h-screen bg-white dark:bg-black  pointer-events-none ${isMenuOpen ? 'pointer-events-auto' : ''
           }`}
         style={{
-          transform: 'translateY(-100%)',
           display: isMenuOpen ? 'block' : 'none'
         }}
       >
@@ -235,8 +245,9 @@ export default function Header() {
             </a>
             </ShimmerButton>
             <button
-              onClick={toggleMenu}
-              className="px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+              onClick={handleToggle}
+              disabled={isAnimating}
+              className={`px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors ${isAnimating ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               {isMenuOpen ? (
                 <svg
@@ -276,7 +287,9 @@ export default function Header() {
 
         <div className="max-w-7xl mx-auto flex flex-col justify-between min-h-[calc(100vh-80px)]">
           <div className="">
-            <ul ref={menuItemsRef} className="space-y-4 px-4 ">
+            <ul
+              ref={menuItemsRef}
+              className="space-y-4 px-4 ">
               <li>
                 <Link
                   onClick={() => handleNavigation("/")}
@@ -530,7 +543,9 @@ export default function Header() {
                     Stay connected w/ me.
                   </p>
                 </div>
-                <div ref={connectFormRef} className="pt-4 pb-10">
+                <div
+                  ref={connectFormRef}
+                  className="pt-4 pb-10">
                   <ConnectForm />
                 </div>
               </div>
