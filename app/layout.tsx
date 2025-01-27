@@ -24,7 +24,7 @@ export default function RootLayout({
           rel="apple-touch-icon"
           href="/assets/seo/apple-touch-icon.png"
         />
-        <meta name="keywords" content="{{ $keywords ?? 'default, keywords' }}"/>
+        <meta name="keywords" content="{{ $keywords ?? 'default, keywords' }}" />
         <meta name="author" content="Kuldeep Sharma" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="{{ $ogtitle }}" />
@@ -51,7 +51,7 @@ export default function RootLayout({
             <header className="px-2 pt-2.5 " >
               <Header />
             </header>
-            <ScrollProgress/>
+            <ScrollProgress />
             <main className="min-h-screen ">
               {children}
             </main>

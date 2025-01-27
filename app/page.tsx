@@ -2,7 +2,7 @@
 import TabSwitch from "@/components/custom/TabSwitch/TabSwitch";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MoveRight, PhoneCall, User } from "lucide-react";
+import { MoveDown, MoveRight, PhoneCall, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -13,6 +13,9 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Ripple from "@/components/custom/About/Ripple";
+import Image from "next/image";
+import { Hero } from "@/components/custom/Hero/Hero";
+import CertificatesMarquee from "@/components/custom/Home/CertificatesMarquee";
 
 export default function Home() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -53,21 +56,24 @@ export default function Home() {
   }, [api, current]);
   return (
     <div className="pt-10">
-
+      <section>
+        <Hero />
+      </section>
       <section>
         <div className="w-full">
-          <div className="container mx-auto">
+          <div className=" mx-auto">
             <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
-              <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+              <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden ">
 
-               
-                  <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-white">
-                    Ripple
-                  </p>
-                  <Ripple />
-              
-                <Button variant="secondary" size="sm" className="gap-4">
-                  Read our launch article <MoveRight className="w-4 h-4" />
+                <Image src={'/assets/images/my.png'} width={30} height={30} alt="hello" className="w-32 h-32 rounded-3xl" />
+                <p className="z-10 whitespace-pre-wrap text-center text-black text-4xl font-medium tracking-tighter dark:text-white">
+                  Kuldeep Sharma
+                </p>
+
+                <Ripple />
+
+                <Button variant="secondary" size="sm" className=" rounded-full animate-bounce flex-col justify-center mt-4">
+                  <MoveDown className="w-4 h-4" />
                 </Button>
               </div>
               <div className="flex gap-4 flex-col">
@@ -286,6 +292,36 @@ export default function Home() {
                   ))}
                 </CarouselContent>
               </Carousel>
+            </div>
+          </div>
+        </div>
+      </section>
+      <CertificatesMarquee/>
+      <section>
+        <div className="w-full py-20 lg:py-40">
+          <div className="container mx-auto">
+            <div className="flex flex-col text-center bg-muted rounded-md p-4 lg:p-14 gap-8 items-center">
+              <div>
+                <Badge>Get started</Badge>
+              </div>
+              <div className="flex flex-col gap-2">
+                <h3 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular">
+                  Try our platform today!
+                </h3>
+                <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl">
+                  Managing a small business today is already tough. Avoid further
+                  complications by ditching outdated, tedious trade methods. Our goal
+                  is to streamline SMB trade, making it easier and faster than ever.
+                </p>
+              </div>
+              <div className="flex flex-row gap-4">
+                <Button className="gap-4" variant="outline">
+                  Jump on a call <PhoneCall className="w-4 h-4" />
+                </Button>
+                <Button className="gap-4">
+                  Sign up here <MoveRight className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
