@@ -1,7 +1,7 @@
 "use client";
 import { ModeToggle } from '@/components/ModeToggle'
 import Link from 'next/link'
-import React, from 'react'
+
 
 
 export default function Footer() {
