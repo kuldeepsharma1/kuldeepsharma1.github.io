@@ -70,18 +70,7 @@
     --ring: 240 4.9% 83.9%;
   }
 
-  @font-face {
-    font-family: "Roboto";
-    font-weight: 1 1000;
-    src: url("/public/assets/fonts/Roboto.ttf") format('truetype');
-  }
-
-  @font-face {
-    font-family: "RobotoItalic";
-    font-weight: 1 1000;
-    font-style: italic;
-    src: url("/public/assets/fonts/Robotoitalic.ttf") format('truetype');
-  }
+ 
 }
 
 /* Add custom selection styles */

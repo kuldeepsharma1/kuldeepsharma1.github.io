@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import ConnectForm from "./Form/ConnectForm";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -101,7 +101,7 @@ export default function Header() {
           onClick={() => handleNavigation("/")}
           href={"/"}
         >
-          <h1 className="text-4xl font-semibold ">
+          <h1 className="text-2xl sm:text-4xl font-semibold tracking-tighter ">
             <span className={`${isMenuOpen ? "opacity-70" : "opacity-100"}`}>
               Kul
             </span>
@@ -109,39 +109,34 @@ export default function Header() {
           </h1>
         </Link>
         <div>
-
-          {/* className="px-4 py-2  border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors" */}
-
           <div className="flex items-center space-x-2">
-            <ShimmerButton>  <a
+            <Link
               href="mailto:k4kuldeep108@gmail.com"
-              target="_blank" className="flex z-50 items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-
-              Let&apos;s Talk{" "}
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </span>
-            </a>
-            </ShimmerButton>
-
-
+              target="_blank" className="flex  items-center whitespace-pre-wrap text-center text-sm font-semibold leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-md">
+              <ShimmerButton>
+                Let&apos;s Talk{" "}
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-4"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </span>
+              </ShimmerButton>
+            </Link>
             {/* menu toggle */}
             <button
               onClick={toggleMenu}
-              className="px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+              className="px-3 sm:px-4 py-1.5 rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
             >
               {isMenuOpen ? (
                 <svg
@@ -150,7 +145,7 @@ export default function Header() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-8"
                 >
                   <path
                     strokeLinecap="round"
@@ -165,7 +160,7 @@ export default function Header() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-8"
                 >
                   <path
                     strokeLinecap="round"
@@ -182,7 +177,7 @@ export default function Header() {
       {/* Modal Menu */}
       <div
         ref={menuRef}
-        className={`fixed  top-0 left-0 w-full min-h-screen bg-white dark:bg-black  pointer-events-none ${isMenuOpen ? 'pointer-events-auto' : ''
+        className={`fixed  top-0 left-0 w-full min-h-screen  bg-white dark:bg-black  pointer-events-none ${isMenuOpen ? 'pointer-events-auto' : ''
           }`}
         style={{
           display: isMenuOpen ? 'block' : 'none'
@@ -196,7 +191,7 @@ export default function Header() {
             onClick={() => handleNavigation("/")}
             href={"/"}
           >
-            <h1 className="text-4xl font-semibold">
+            <h1 className="text-2xl sm:text-4xl font-semibold tracking-tighter">
               <span className={`${isMenuOpen ? "opacity-70" : "opacity-100"}`}>
                 Kul
               </span>
@@ -205,32 +200,33 @@ export default function Header() {
           </Link>
 
           <div className="flex items-center space-x-2">
-            <ShimmerButton>  <a
+            <Link
               href="mailto:k4kuldeep108@gmail.com"
-              target="_blank" className="flex z-50 items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-
-              Let&apos;s Talk{" "}
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                  />
-                </svg>
-              </span>
-            </a>
-            </ShimmerButton>
+              target="_blank" className="flex z-50 rounded-full items-center whitespace-pre-wrap text-center text-sm font-semibold leading-none tracking-tight text-white  dark:from-white dark:to-slate-900/10 lg:text-md">
+              <ShimmerButton>
+                Let&apos;s Talk{" "}
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-4"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </span>
+              </ShimmerButton>
+            </Link>
+            {/* menu toggle */}
             <button
               onClick={toggleMenu}
-              className="px-4 py-2 border border-black dark:border-white rounded-full hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+              className="px-3 sm:px-4 py-1.5 rounded-full bg-black hover:bg-black/80 text-white hover:text-white/80 dark:bg-white dark:hover:bg-white/80 dark:text-black dark:hover:text-black/80 transition-colors"
             >
               {isMenuOpen ? (
                 <svg
@@ -239,7 +235,7 @@ export default function Header() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-8"
                 >
                   <path
                     strokeLinecap="round"
@@ -254,7 +250,7 @@ export default function Header() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-8"
                 >
                   <path
                     strokeLinecap="round"
@@ -268,35 +264,35 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col justify-between min-h-[calc(100vh-80px)]">
-          <div className="">
+        <div className="max-w-7xl mx-auto flex flex-col justify-between min-h-fit max-h-fit">
+          <div className="pt-2 pb-10">
             <ul
               ref={menuItemsRef}
-              className="space-y-4 px-4 ">
+              className=" space-y-4 px-4 tracking-tighter font-[600]">
               <li>
                 <Link
                   onClick={() => handleNavigation("/")}
                   href="/"
-                  className="flex flex-row items-center justify-between hover:opacity-80 py-2 rounded-md "
+                  className="group flex flex-row items-center hover:animate-background-shine justify-between px-2 py-3 rounded-xl  text-black hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300 bg-[linear-gradient(10deg,#fff,45%,#e5e6e8,55%,#fff)] dark:bg-[linear-gradient(10deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] hover:shadow-xl"
                 >
                   <div>
                     {" "}
-                    <h4 className="text-5xl sm:text-7xl font-[600] inline">
+                    <h4 className="text-5xl sm:text-7xl   inline">
                       Home
                     </h4>
-                    <span className="text-black/80 dark:text-white/80 pl-2">
+                    <span className="text-black/80 dark:text-white/80 dark:group-hover:text-white pl-2">
                       (01)
                     </span>
                   </div>
-                  <div className="mr-2">
-                    <button className="px-4 py-2 rounded-full border-black dark:border-white border">
+                  <div className="mr-2  ">
+                    <div className="px-4  py-2 border-2 rounded-full  border-black/50 group-hover:border-black dark:border-white/50 dark:group-hover:border-white  ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-4"
+                        strokeWidth={3}
+                        stroke="#fff"
+                        className="size-4 stroke-black/50 group-hover:stroke-black dark:stroke-white/80 dark:group-hover:stroke-white"
                       >
                         <path
                           strokeLinecap="round"
@@ -305,7 +301,7 @@ export default function Header() {
                         />
                       </svg>{" "}
                       <span className="sr-only">Visit</span>
-                    </button>
+                    </div   >
                   </div>
                 </Link>
               </li>
@@ -313,35 +309,35 @@ export default function Header() {
                 <Link
                   onClick={() => handleNavigation("/about")}
                   href="/about"
-                  className="flex flex-row items-center justify-between hover:opacity-80 py-2 rounded-md "
+                  className="group flex flex-row items-center hover:animate-background-shine justify-between px-2 py-3 rounded-xl  text-black hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300 bg-[linear-gradient(10deg,#fff,45%,#e5e6e8,55%,#fff)] dark:bg-[linear-gradient(10deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] hover:shadow-xl"
                 >
                   <div>
                     {" "}
-                    <h4 className="text-5xl sm:text-7xl font-[600] inline">
+                    <h4 className="text-5xl sm:text-7xl   inline">
                       About Me
                     </h4>
-                    <span className="text-black/80 dark:text-white/80 pl-2">
+                    <span className="text-black/80 dark:text-white/80 dark:group-hover:text-white pl-2">
                       (02)
                     </span>
                   </div>
-                  <div className="mr-2">
-                    <button className="px-4 py-2 rounded-full border-black dark:border-white border">
+                  <div className="mr-2  ">
+                    <div className="px-4  py-2 border-2 rounded-full  border-black/50 group-hover:border-black dark:border-white/50 dark:group-hover:border-white  ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-4"
+                        strokeWidth={3}
+                        stroke="#fff"
+                        className="size-4 stroke-black/50 group-hover:stroke-black dark:stroke-white/80 dark:group-hover:stroke-white"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                         />
-                      </svg>
+                      </svg>{" "}
                       <span className="sr-only">Visit</span>
-                    </button>
+                    </div   >
                   </div>
                 </Link>
               </li>
@@ -349,35 +345,35 @@ export default function Header() {
                 <Link
                   onClick={() => handleNavigation("/works")}
                   href="/works"
-                  className="flex flex-row items-center justify-between hover:opacity-80 opacity-100 py-2 rounded-md "
+                  className="group flex flex-row items-center hover:animate-background-shine justify-between px-2 py-3 rounded-xl  text-black hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300 bg-[linear-gradient(10deg,#fff,45%,#e5e6e8,55%,#fff)] dark:bg-[linear-gradient(10deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] hover:shadow-xl"
                 >
                   <div>
                     {" "}
-                    <h4 className="text-5xl sm:text-7xl font-[600] inline">
+                    <h4 className="text-5xl sm:text-7xl   inline">
                       Works
                     </h4>
-                    <span className="text-black/80 dark:text-white/80 pl-2">
+                    <span className="text-black/80 dark:text-white/80 dark:group-hover:text-white pl-2">
                       (03)
                     </span>
                   </div>
-                  <div className="mr-2">
-                    <button className="px-4 py-2 rounded-full border-black dark:border-white border">
+                  <div className="mr-2  ">
+                    <div className="px-4  py-2 border-2 rounded-full  border-black/50 group-hover:border-black dark:border-white/50 dark:group-hover:border-white  ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-4"
+                        strokeWidth={3}
+                        stroke="#fff"
+                        className="size-4 stroke-black/50 group-hover:stroke-black dark:stroke-white/80 dark:group-hover:stroke-white"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                         />
-                      </svg>
+                      </svg>{" "}
                       <span className="sr-only">Visit</span>
-                    </button>
+                    </div   >
                   </div>
                 </Link>
               </li>
@@ -385,52 +381,52 @@ export default function Header() {
                 <Link
                   onClick={() => handleNavigation("/insights")}
                   href="/insights"
-                  className="flex flex-row items-center justify-between hover:opacity-80 py-2 rounded-md "
+                  className="group flex flex-row items-center hover:animate-background-shine justify-between px-2 py-3 rounded-xl  text-black hover:text-zinc-600 dark:text-white dark:hover:text-zinc-300 bg-[linear-gradient(10deg,#fff,45%,#e5e6e8,55%,#fff)] dark:bg-[linear-gradient(10deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] hover:shadow-xl"
                 >
                   <div>
                     {" "}
-                    <h4 className="text-5xl sm:text-7xl font-[600] inline">
+                    <h4 className="text-5xl sm:text-7xl   inline">
                       Insights
                     </h4>
-                    <span className="text-black/80 dark:text-white/80 pl-2">
+                    <span className="text-black/80 dark:text-white/80 dark:group-hover:text-white pl-2">
                       (04)
                     </span>
                   </div>
-                  <div className="mr-2">
-                    <button className="px-4 py-2 rounded-full border-black dark:border-white border">
+                  <div className="mr-2  ">
+                    <div className="px-4  py-2 border-2 rounded-full  border-black/50 group-hover:border-black dark:border-white/50 dark:group-hover:border-white  ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
-                        strokeWidth={1.5}
-                        stroke="currentColor"
-                        className="size-4"
+                        strokeWidth={3}
+                        stroke="#fff"
+                        className="size-4 stroke-black/50 group-hover:stroke-black dark:stroke-white/80 dark:group-hover:stroke-white"
                       >
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                         />
-                      </svg>
+                      </svg>{" "}
                       <span className="sr-only">Visit</span>
-                    </button>
+                    </div   >
                   </div>
                 </Link>
               </li>
             </ul>
           </div>
-          <div className="border-t  mt-2 px-4 py-2 border-black/30 dark:border-white/30">
-            <div className="flex flex-col-reverse sm:flex-row justify-center sm:justify-between pt-5 items-center">
-              <div className="flex flex-row sm:flex-col justify-between  sm:space-y-8 w-full pt-5 sm:-mt-10 ">
+          <div className=" border-t   px-4 py-2 border-black/30 dark:border-white/30">
+            <div className="flex flex-col-reverse md:flex-row md:justify-between md:pt-5 ">
+              {/* socials */}
+              <div className=" ">
                 <div>
-                  <p className="text-black/80 dark:text-white/80 ">
+                  <p className="text-black/80 dark:text-white/80 text-center md:text-left ">
                     Follow me.
                   </p>
                 </div>
-
                 <ul
                   ref={socialIconsRef}
-                  className="inline-flex flex-row space-x-2  -mt-5 sm:mt-0"
+                  className="flex flex-row justify-evenly items-center  space-x-2  pt-5 md:pt-2"
                 >
                   <li>
                     <Link
@@ -439,7 +435,7 @@ export default function Header() {
                       href={"https://github.com/kuldeepsharma1"}
                     >
                       <svg
-                        className="size-6 "
+                        className="size-10 "
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -461,7 +457,7 @@ export default function Header() {
                       href={"https://www.linkedin.com/in/kuldeepsharma22/"}
                     >
                       <svg
-                        className="size-6"
+                        className="size-10"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -484,7 +480,7 @@ export default function Header() {
                       href={"https://www.instagram.com/kuldeep_sharma_2022/"}
                     >
                       <svg
-                        className="size-6"
+                        className="size-10"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -507,7 +503,7 @@ export default function Header() {
                       href={"https://x.com/kuldeepit1"}
                     >
                       <svg
-                        className="size-6"
+                        className="size-10"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -520,7 +516,8 @@ export default function Header() {
                   </li>
                 </ul>
               </div>
-              <div className=" flex flex-col justify-center  sm:justify-start sm:items-start space-y-2 items-center  ">
+              {/* form */}
+              <div className="text-center ">
                 <div>
                   <p className="text-black/80 dark:text-white/80">
                     Stay connected w/ me.
@@ -528,7 +525,7 @@ export default function Header() {
                 </div>
                 <div
                   ref={connectFormRef}
-                  className="pt-4 pb-10">
+                  className="pt-4 pb-10 ">
                   <ConnectForm />
                 </div>
               </div>
@@ -539,3 +536,5 @@ export default function Header() {
     </div>
   );
 }
+
+

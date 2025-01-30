@@ -8,6 +8,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 // import type { Metadata } from 'next'
 
 // export const metadata: Metadata = {
@@ -121,6 +122,7 @@ export default function Page() {
                         <p className="text-muted-foreground text-sm">
                           We&apos;ve made it fast and reliable.
                         </p>
+                        <Link href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</Link>
                       </div>
                     </div>
                     <div className="flex flex-row gap-6 items-start">

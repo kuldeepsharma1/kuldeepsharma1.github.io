@@ -55,50 +55,25 @@ export default function Home() {
     }, 4000);
   }, [api, current]);
   return (
-    <div className="pt-10">
+    <div >
+
       <section>
-        <Hero />
-      </section>
-      <section>
-        <div className="w-full">
-          <div className=" mx-auto">
-            <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
-              <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden ">
+        <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden ">
 
-                <Image src={'/assets/images/my.png'} width={30} height={30} alt="hello" className="w-32 h-32 rounded-3xl" />
-                <p className="z-10 whitespace-pre-wrap text-center text-black text-4xl font-medium tracking-tighter dark:text-white">
-                  Kuldeep Sharma
-                </p>
+          <Image priority src={'/assets/images/my.png'} width={30} height={30} alt="hello" className="w-32 h-32 rounded-3xl" />
+          <p className="z-10 whitespace-pre-wrap text-center text-black text-4xl font-medium tracking-tighter dark:text-white">
+            Kuldeep Sharma
+          </p>
 
-                <Ripple />
+          <Ripple />
 
-                <Button variant="secondary" size="sm" className=" rounded-full animate-bounce flex-col justify-center mt-4">
-                  <MoveDown className="w-4 h-4" />
-                </Button>
-              </div>
-              <div className="flex gap-4 flex-col">
-                <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
-                  This is the start of something new
-                </h1>
-                <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
-                  Managing a small business today is already tough. Avoid further
-                  complications by ditching outdated, tedious trade methods. Our goal
-                  is to streamline SMB trade, making it easier and faster than ever.
-                </p>
-              </div>
-              <div className="flex flex-row gap-3">
-                <Button size="lg" className="gap-4" variant="outline">
-                  Jump on a call <PhoneCall className="w-4 h-4" />
-                </Button>
-                <Button size="lg" className="gap-4">
-                  Sign up here <MoveRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
+          <Button variant="secondary" size="sm" className=" rounded-full animate-bounce flex-col justify-center mt-4">
+            <MoveDown className="w-4 h-4" />
+          </Button>
         </div>
+      
       </section>
-      <section>
+      {/*   <section>
         <div className="w-full">
           <div className="container mx-auto">
             <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
@@ -253,9 +228,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* projects */}
-      <section>
+      {/* <section>
         <div className="w-full py-20 lg:py-40">
           <div className="container mx-auto">
             <div className="flex flex-col gap-10">
@@ -295,11 +270,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-      <CertificatesMarquee/>
-      <section>
-        <div className="w-full py-20 lg:py-40">
-          <div className="container mx-auto">
+      </section> */}
+      <CertificatesMarquee />
+      {/* <section>
+        <div className="w-full py-20 lg:py-40 ">
+       
+          <div className="mx-auto">
+          <div className='mx-auto  h-[1px] animate-border-width  rounded-full bg-gradient-to-r from-[rgba(77,77,77,0)] dark:from-[rgba(17,17,17,0)] dark:via-white via-black to-[rgba(77,77,77,0)] dark:to-[rgba(17,17,17,0)] transition-all duration-1000' />
             <div className="flex flex-col text-center bg-muted rounded-md p-4 lg:p-14 gap-8 items-center">
               <div>
                 <Badge>Get started</Badge>
@@ -315,9 +292,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-row gap-4">
-                <Button className="gap-4" variant="outline">
-                  Jump on a call <PhoneCall className="w-4 h-4" />
-                </Button>
+          
                 <Button className="gap-4">
                   Sign up here <MoveRight className="w-4 h-4" />
                 </Button>
@@ -325,7 +300,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

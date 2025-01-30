@@ -18,10 +18,6 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        roboto: ['Roboto', 'sans-serif'],
-        robotoitalic: ['RobotoItalic', 'sans-serif'],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -106,6 +102,24 @@ const config = {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(calc(-100% - var(--gap)))" },
         },
+        "border-width": {
+          "from": {
+            "width": "20%",
+            "opacity": "0"
+          },
+          "to": {
+            "width": "40%",
+            "opacity": "1"
+          }
+        },
+        "background-shine": {
+          "from": {
+            "backgroundPosition": "0 0"
+          },
+          "to": {
+            "backgroundPosition": "-200% 0"
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -115,6 +129,8 @@ const config = {
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+        "border-width": "border-width 3s infinite alternate",
+        "background-shine": "background-shine 2s linear infinite"
       },
     },
   },

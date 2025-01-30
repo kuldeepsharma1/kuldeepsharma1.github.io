@@ -47,20 +47,20 @@ export default function ConnectForm() {
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex w-full max-w-sm items-center space-x-2 ">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-xs mx-auto flex flex-col md:flex-row space-y-4 md:space-x-2 md:space-y-0 ">
                 <FormField
                     control={form.control}
                     name="username"
                     render={({ field }) => (
                         <FormItem>
                             <FormControl>
-                                <Input type="email" placeholder="Enter your email" {...field} />
+                                <Input type="email" className="w-full" placeholder="Enter your email" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button className="" type="submit"><span className="">Submit</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
+                <Button  type="submit"><span>Submit</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
                 </Button>
