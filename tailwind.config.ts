@@ -130,8 +130,12 @@ const config = {
         marquee: "marquee var(--duration) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         "border-width": "border-width 3s infinite alternate",
-        "background-shine": "background-shine 2s linear infinite"
+        "background-shine": "background-shine 2s linear infinite",
+        "background-shine-once": "background-shine 2s linear "
       },
+      backgroundImage:{
+        'my': "url('https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -16,6 +16,7 @@ import Ripple from "@/components/custom/About/Ripple";
 import Image from "next/image";
 import { Hero } from "@/components/custom/Hero/Hero";
 import CertificatesMarquee from "@/components/custom/Home/CertificatesMarquee";
+import Cta from "@/components/custom/cta/Cta";
 
 export default function Home() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -71,7 +72,7 @@ export default function Home() {
             <MoveDown className="w-4 h-4" />
           </Button>
         </div>
-      
+
       </section>
       {/*   <section>
         <div className="w-full">
@@ -272,35 +273,12 @@ export default function Home() {
         </div>
       </section> */}
       <CertificatesMarquee />
-      {/* <section>
-        <div className="w-full py-20 lg:py-40 ">
-       
-          <div className="mx-auto">
-          <div className='mx-auto  h-[1px] animate-border-width  rounded-full bg-gradient-to-r from-[rgba(77,77,77,0)] dark:from-[rgba(17,17,17,0)] dark:via-white via-black to-[rgba(77,77,77,0)] dark:to-[rgba(17,17,17,0)] transition-all duration-1000' />
-            <div className="flex flex-col text-center bg-muted rounded-md p-4 lg:p-14 gap-8 items-center">
-              <div>
-                <Badge>Get started</Badge>
-              </div>
-              <div className="flex flex-col gap-2">
-                <h3 className="text-3xl md:text-5xl tracking-tighter max-w-xl font-regular">
-                  Try our platform today!
-                </h3>
-                <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl">
-                  Managing a small business today is already tough. Avoid further
-                  complications by ditching outdated, tedious trade methods. Our goal
-                  is to streamline SMB trade, making it easier and faster than ever.
-                </p>
-              </div>
-              <div className="flex flex-row gap-4">
-          
-                <Button className="gap-4">
-                  Sign up here <MoveRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      <Cta badgeText="Let&apos;s Build Together"
+        title="Want to collaborate on something amazing?"
+        description="I&apos;m always open to working on innovative projects in machine learning, AI, and software development. Whether it&apos;s a startup idea, a research project, or a side hustle, let&apos;s build something great together."
+        readMoreLink="/about"
+        contactLink="/contact"
+      />
     </div>
   );
 }

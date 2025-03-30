@@ -3,8 +3,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 import ConnectForm from "./Form/ConnectForm";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useScrollDirection } from '@/hooks/useScrollDirection';
 import { ShimmerButton } from "./ShimmerButton";
 import { useHeaderStore } from "@/store/store";
@@ -20,70 +18,6 @@ export default function Header() {
     setIsMenuOpen(false); // Close the menu
     router.push(url); // Navigate to the desired URL
   };
-  useGSAP(() => {
-    if (
-      menuItemsRef.current &&
-      socialIconsRef.current &&
-      connectFormRef.current
-    ) {
-      const menuItems = Array.from(menuItemsRef.current.querySelectorAll("li"));
-      const socialIcons = Array.from(
-        socialIconsRef.current.querySelectorAll("li")
-      );
-
-      if (isMenuOpen) {
-        gsap
-          .timeline()
-          .to(menuRef.current, {
-            duration: 0.5,
-            opacity: 1,
-            y: 0,
-            display: "block",
-            ease: "power3.out",
-          })
-          .fromTo(
-            menuItems,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, stagger: 0.1, ease: "power3.out" }
-          )
-          .fromTo(
-            socialIcons,
-            { opacity: 0, x: -20 },
-            { opacity: 1, x: 0, stagger: 0.1, ease: "power3.out" },
-            "-=0.5"
-          )
-          .fromTo(
-            connectFormRef.current,
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-            "-=0.3"
-          );
-      } else {
-        gsap
-          .timeline()
-          .to([socialIcons, connectFormRef.current], {
-            opacity: 0,
-            y: 20,
-            duration: 0.3,
-            ease: "power3.in",
-          })
-          .to(menuItems, {
-            opacity: 0,
-            y: 20,
-            stagger: 0.1,
-            ease: "power3.in",
-          })
-          .to(menuRef.current, {
-            duration: 0.5,
-            opacity: 0,
-            y: -20,
-            display: "none",
-            ease: "power3.in",
-          });
-      }
-    }
-  }, [isMenuOpen]);
-
   return (
     <div
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrollDirection === 'down' && !isMenuOpen

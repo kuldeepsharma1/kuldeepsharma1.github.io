@@ -1,3 +1,4 @@
+import Cta from '@/components/custom/cta/Cta'
 import TabSwitch from '@/components/custom/TabSwitch/TabSwitch'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
@@ -118,6 +119,12 @@ export default function page() {
         </div>
 
       </section>
+      <Cta badgeText="Let&apos;s Build Together"
+        title="Want to collaborate on something amazing?"
+        description="I&apos;m always open to working on innovative projects in machine learning, AI, and software development. Whether it&apos;s a startup idea, a research project, or a side hustle, let&apos;s build something great together."
+        readMoreLink="/insights"
+        contactLink="/contact"
+      />
     </div>
   )
 }
