@@ -8,7 +8,7 @@ import { CustomEase } from "gsap/CustomEase";
 import { TextPlugin } from "gsap/TextPlugin";
 import { Flip } from "gsap/Flip";
 import Image from 'next/image';
-import { LayoutGrid, List, Tag, Clock2 } from 'lucide-react';
+import { LayoutGrid, List, Tag, Clock2, Calendar1, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase, TextPlugin, Flip);
@@ -17,10 +17,12 @@ CustomEase.create("customBounce", "M0,0 C0.14,0 0.27,0.06 0.32,0.87 0.35,1 0.4,1
 
 export interface Post {
     title: string;
+    desc: string;
     img?: string;
     link?: string;
     category?: string;
     readTime?: string;
+    date: string;
 }
 export interface Project {
     title: string;
@@ -29,16 +31,21 @@ export interface Project {
     link?: string;
     category?: string;
     tech?: string[];
+    date: string;
 }
 export interface Event {
     title: string;
+    desc: string;
     img?: string;
     link?: string;
+    date: string;
 }
 export interface Other {
     title: string;
+    desc: string;
     img?: string;
     link?: string;
+    date: string;
 }
 export interface InsightsData {
     posts: Post[];
@@ -140,13 +147,13 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                 <div className="flex items-center gap-3 mb-4">
                     {'category' in item && item.category && (
                         <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
-                            {item.category}
+                            <Tag className='size-2.5 mr-1' />    {item.category}
                         </Badge>
                     )}
-                    {'readTime' in item && item.readTime && (
+                    {'date' in item && item.date && (
                         <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
-                            <Clock2 className="w-3 h-3 mr-1 stroke-2" />
-                            {item.readTime}
+                            <Calendar1 className="w-3 h-3 mr-1 stroke-2" />
+                            {item.date}
                         </span>
                     )}
                 </div>
@@ -158,25 +165,33 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                         {desc}
                     </p>
                 )}
-                {'tech' in item && item.tech && (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                        {item.tech.map((t, i) => (
-                            <Badge key={i} variant={'outline'}>
-                                {t}
-                            </Badge>
-                        ))}
-                    </div>
-                )}
-                {link && (
-                    <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center mt-4 text-sm font-medium ">
-                        <span className='hover:underline underline-offset-4'>{ctaText}</span>
-                        <span className="ml-1 transition-transform group-hover:translate-x-1 ">→</span>
-                    </a>
-                )}
+                <div className='flex flex-row flex-wrap justify-between items-center space-y-4 mt-4'>
+                    {'tech' in item && item.tech && (
+                        <div className="flex flex-wrap gap-2 mt-4">
+                            {item.tech.map((t, i) => (
+                                <Badge key={i} variant={'outline'}>
+                                    {t}
+                                </Badge>
+                            ))}
+                        </div>
+                    )}
+                    {'readTime' in item && item.readTime && (
+                        <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
+                            <Clock2 className="w-3 h-3 mr-1 stroke-2" />
+                            {item.readTime}
+                        </span>
+                    )}
+                    {link && (
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className=" text-sm font-medium ">
+                            <span className='hover:underline underline-offset-4'>{ctaText}</span>
+                            <span className="ml-1 transition-transform group-hover:translate-x-1 ">→</span>
+                        </a>
+                    )}
+                </div>
             </div>
         </div>
     );
@@ -258,7 +273,7 @@ export default function Insights({ posts, projects, events, others }: InsightsDa
             <div className="sticky top-0 z-10 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl py-6 mb-12">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                     <h2 className="text-4xl md:text-7xl pb-1.5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
-                        Insights 
+                        Insights
                     </h2>
                     <div className="flex items-center gap-2  rounded-lg p-1">
                         <button
@@ -282,7 +297,7 @@ export default function Insights({ posts, projects, events, others }: InsightsDa
                     <TabsList
                         ref={tabsListRef}
                         className={
-                            'inline-flex bg-neutral-100 dark:bg-neutral-900 p-1 rounded-full'
+                            'inline-flex bg-neutral-100 dark:bg-neutral-900 p-1 py-6 rounded-full'
                         }
                     >
                         {['posts', 'projects', 'events', 'others'].map((value) => (

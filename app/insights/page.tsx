@@ -34,13 +34,35 @@ const myFaqs: FaqItem[] = [
     answer: "Mastering AI/ML and building more impactful tech solutions.",
   },
 ];
-
+const updates = {
+  posts:
+    [
+      { title: "How to Master TypeScript", desc: 'hello this is demo', category: 'asdsadasd', readTime: '20', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+      { title: "React 18 Features", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+      { title: "Best Practices for JavaScript", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+      { title: "Introduction to Next.js", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+    ],
+  projects: [
+    { title: "Portfolio Website", category: "hello", tech: ['asd', 'asd'], desc: "A personal portfolio website built with React and Tailwind CSS.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+    { title: "E-commerce Store", desc: "A full-stack e-commerce app with payment integration.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+    { title: "Blog Platform", desc: "A blogging platform with user authentication and content management.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+    { title: "Weather App", desc: "A simple weather app using React and OpenWeatherMap API.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+  ],
+  events: [
+    { title: "ReactJS Conference", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+    { title: "Frontend Masters Workshop", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+    { title: "JavaScript Meetup", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
+  ],
+  others: [
+    { title: "GitHub Repo", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "https://github.com/", date: '20 days' },
+    { title: "LinkedIn Profile", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "https://www.linkedin.com/", date: '20 days' },
+  ]
+}
 export default function page() {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
-
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -48,7 +70,6 @@ export default function page() {
       transition: { staggerChildren: 0.2 },
     },
   };
-
   return (
     <div>
       <TabSwitch
@@ -147,27 +168,10 @@ export default function page() {
       />
       <section >
         <Insights
-          posts={[
-            { title: "How to Master TypeScript", category: 'asdsadasd', readTime: '20', img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "React 18 Features", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "Best Practices for JavaScript", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "Introduction to Next.js", img: "/assets/images/avatar.jpeg", link: "#" },
-          ]}
-          projects={[
-            { title: "Portfolio Website", category: "hello", tech: ['asd', 'asd'], desc: "A personal portfolio website built with React and Tailwind CSS.", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "E-commerce Store", desc: "A full-stack e-commerce app with payment integration.", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "Blog Platform", desc: "A blogging platform with user authentication and content management.", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "Weather App", desc: "A simple weather app using React and OpenWeatherMap API.", img: "/assets/images/avatar.jpeg", link: "#" },
-          ]}
-          events={[
-            { title: "ReactJS Conference", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "Frontend Masters Workshop", img: "/assets/images/avatar.jpeg", link: "#" },
-            { title: "JavaScript Meetup", img: "/assets/images/avatar.jpeg", link: "#" },
-          ]}
-          others={[
-            { title: "GitHub Repo", img: "/assets/images/avatar.jpeg", link: "https://github.com/" },
-            { title: "LinkedIn Profile", img: "/assets/images/avatar.jpeg", link: "https://www.linkedin.com/" },
-          ]}
+          posts={updates.posts}
+          projects={updates.projects}
+          events={updates.events}
+          others={updates.others}
         />
       </section>
       <Faq title='Questions About My Work' description=' I’m a software engineer building tools like Rize and contributing to open-source at Hytek Org.' faqs={myFaqs} />
