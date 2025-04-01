@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 interface TabItem {
   title: string;
-  count: number;
+  count: string;
   description: string;
 }
 
@@ -50,8 +50,8 @@ export default function TabSwitch({
                     : 'text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white'
                     }`}>
                     {primaryTab.title}
-                    <span className="text-2xl ml-2 text-black/60 dark:text-white/60">
-                      ({primaryTab.count.toString().padStart(2, '0')})
+                    <span className="text-2xl ml-2 text-black/60 dark:text-white/60 normal-case">
+                      ({primaryTab.count})
                     </span>
                   </h1>
                 </button>
@@ -66,8 +66,8 @@ export default function TabSwitch({
                       : 'text-black/50 dark:text-white/50 hover:text-black dark:hover:text-white'
                       }`}>
                       {secondaryTab.title}
-                      <span className="text-2xl ml-2 text-black/60 dark:text-white/60">
-                        ({secondaryTab.count.toString().padStart(2, '0')})
+                      <span className="text-2xl ml-2 text-black/60 dark:text-white/60 normal-case">
+                        ({secondaryTab.count})
                       </span>
                     </h1>
                   </button>

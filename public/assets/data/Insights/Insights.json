@@ -1,13 +1,13 @@
 {
   "posts": [
     {
-      "title": "How to Master TypeScript",
-      "desc": "hello this is demo",
-      "category": "asdsadasd",
-      "readTime": "20",
-      "img": "/assets/images/avatar.jpeg",
-      "link": "#",
-      "date": "20 days"
+      "title": "The Thinking Rock: How We Turn a Rock into a Computer Brain",
+      "desc": "Ever wonder how a simple rock becomes the brain of your computer? Discover the fun, easy steps from sand to silicon that power our digital world.",
+      "category": "Technology",
+      "readTime": "10",
+      "img": "https://ipost.hytek.org.in/storage/images/posts/the-thinking-rock-how-we-turn-a-rock-into-a-computer-brain.jpg",
+      "link": "https://ipost.hytek.org.in/posts/the-thinking-rock-how-we-turn-a-rock-into-a-computer-brain",
+      "date": "2025-03-24"
     },
     {
       "title": "React 18 Features",
