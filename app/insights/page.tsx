@@ -1,9 +1,10 @@
 'use client'
 import Cta from '@/components/custom/cta/Cta'
-import Faq, { FaqItem } from '@/components/custom/Faq/FAQ'
+import Faq from '@/components/custom/Faq/FAQ'
 import Insights from '@/components/custom/Insights/Insights'
 import TabSwitch from '@/components/custom/TabSwitch/TabSwitch'
 import { Badge } from '@/components/ui/badge'
+import { FaqItem, InsightsData } from '@/types/Insights'
 import { motion } from 'framer-motion'
 import { Check, } from 'lucide-react'
 import Image from 'next/image'
@@ -34,7 +35,7 @@ const myFaqs: FaqItem[] = [
     answer: "Mastering AI/ML and building more impactful tech solutions.",
   },
 ];
-const updates = {
+const updates:InsightsData = {
   posts:
     [
       { title: "How to Master TypeScript", desc: 'hello this is demo', category: 'asdsadasd', readTime: '20', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },

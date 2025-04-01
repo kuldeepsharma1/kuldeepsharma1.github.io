@@ -5,22 +5,13 @@ import {
     AccordionContent,
 } from '@/components/core/accordion';
 import { Badge } from "@/components/ui/badge";
+import { FaqItem } from '@/types/Insights';
 import { Plus } from 'lucide-react';
-
-
-export interface FaqItem {
-    question: string;
-    answer: string;
-}
-
 interface FaqProps {
     faqs: FaqItem[];
     title: string;
     description: string;
 }
-
-
-
 const Faq: React.FC<FaqProps> = ({ faqs, title, description }) => {
     return (
         <section className="w-full py-20 lg:py-40">
@@ -70,12 +61,12 @@ const Faq: React.FC<FaqProps> = ({ faqs, title, description }) => {
                                 <AccordionItem key={`faq-${index}`} value={`item-${index + 1}`} className='py-2'>
                                     <AccordionTrigger className='w-full py-0.5 text-left text-zinc-950 dark:text-zinc-50 group'>
                                         <div className='flex items-center justify-between'>
-                                            <div>{faq.question}</div>
+                                            <div className='text-2xl font-medium'>{faq.question}</div>
                                             <Plus className='h-4 w-4 text-zinc-950 transition-transform duration-200  dark:text-zinc-50' />
                                         </div>
                                     </AccordionTrigger>
                                     <AccordionContent >
-                                        <p className=' text-zinc-500 dark:text-zinc-400'> {faq.answer}</p>
+                                        <p className='text-xl font-normal text-zinc-500 dark:text-zinc-400 pt-2'> {faq.answer}</p>
                                     </AccordionContent>
                                 </AccordionItem>
                             ))}

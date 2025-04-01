@@ -8,54 +8,20 @@ import { CustomEase } from "gsap/CustomEase";
 import { TextPlugin } from "gsap/TextPlugin";
 import { Flip } from "gsap/Flip";
 import Image from 'next/image';
-import { LayoutGrid, List, Tag, Clock2, Calendar1, Clock } from 'lucide-react';
+import { LayoutGrid, List, Tag, Clock2, Calendar1 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { InsightsData, Other, Event, Post, Project } from '@/types/Insights';
 gsap.registerPlugin(ScrollTrigger, CustomEase, TextPlugin, Flip);
 CustomEase.create("customBounce", "M0,0 C0.14,0 0.27,0.06 0.32,0.87 0.35,1 0.4,1 1,1");
 
-
-export interface Post {
-    title: string;
-    desc: string;
-    img?: string;
-    link?: string;
-    category?: string;
-    readTime?: string;
-    date: string;
-}
-export interface Project {
-    title: string;
-    desc: string;
-    img?: string;
-    link?: string;
-    category?: string;
-    tech?: string[];
-    date: string;
-}
-export interface Event {
-    title: string;
-    desc: string;
-    img?: string;
-    link?: string;
-    date: string;
-}
-export interface Other {
-    title: string;
-    desc: string;
-    img?: string;
-    link?: string;
-    date: string;
-}
-export interface InsightsData {
-    posts: Post[];
-    projects: Project[];
-    events: Event[];
-    others: Other[];
-}
-
 interface ItemCardProps {
-    item: Post | Project | Event | Other;
+    item: Post | Project | Event| Other;
     ctaText: string;
     isListView?: boolean;
 }
@@ -176,10 +142,23 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                         </div>
                     )}
                     {'readTime' in item && item.readTime && (
-                        <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
-                            <Clock2 className="w-3 h-3 mr-1 stroke-2" />
-                            {item.readTime}
-                        </span>
+                         <TooltipProvider>
+                         <Tooltip>
+                             <TooltipTrigger asChild>
+                                 <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center transition-colors hover:text-neutral-700 dark:hover:text-neutral-200">
+                                     <Clock2 className="w-3 h-3 mr-1 stroke-2 text-neutral-600 dark:text-neutral-300" />
+                                     {item.readTime}
+                                 </span>
+                             </TooltipTrigger>
+                             <TooltipContent className="w-auto  rounded-full shadow-md bg-white dark:bg-zinc-800 text-sm text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-zinc-700">
+                                 <div className="flex items-center space-x-2">
+                                     <Clock2 className="w-4 h-4 text-neutral-600 dark:text-neutral-300" />
+                                     <p className="font-medium">Time to Read This</p>
+                                 </div>
+                            
+                             </TooltipContent>
+                         </Tooltip>
+                     </TooltipProvider>
                     )}
                     {link && (
                         <a
@@ -208,8 +187,6 @@ const SkeletonLoader: React.FC<{ isListView?: boolean }> = ({ isListView }) => {
         </div>
     );
 };
-
-
 export default function Insights({ posts, projects, events, others }: InsightsData) {
     const [isListView, setIsListView] = useState(false);
     const tabsListRef = useRef<HTMLDivElement>(null);
