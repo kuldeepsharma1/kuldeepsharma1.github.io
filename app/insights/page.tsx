@@ -4,61 +4,13 @@ import Faq from '@/components/custom/Faq/FAQ'
 import Insights from '@/components/custom/Insights/Insights'
 import TabSwitch from '@/components/custom/TabSwitch/TabSwitch'
 import { Badge } from '@/components/ui/badge'
-import { FaqItem, InsightsData } from '@/types/Insights'
 import { motion } from 'framer-motion'
 import { Check, } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
-const myFaqs: FaqItem[] = [
-  {
-    question: "What do I do?",
-    answer: "I develop apps like Rize and ImageNet, and work on open-source projects with Hytek Org.",
-  },
-  {
-    question: "What’s my background?",
-    answer: "B.Tech in Computer Science, ex-Junior Developer, now a Software Engineer at Hytek Org since 2020.",
-  },
-  {
-    question: "What tools do I use?",
-    answer: "Next.js, React Native, TypeScript, Laravel, Tailwind CSS, and more.",
-  },
-  {
-    question: "What’s Rize?",
-    answer: "A productivity app on Google Play with 3,000+ installs to help manage tasks.",
-  },
-  {
-    question: "Why open-source?",
-    answer: "I believe in collaboration and sharing knowledge, driving Hytek Org’s mission.",
-  },
-  {
-    question: "What’s next for me?",
-    answer: "Mastering AI/ML and building more impactful tech solutions.",
-  },
-];
-const updates:InsightsData = {
-  posts:
-    [
-      { title: "How to Master TypeScript", desc: 'hello this is demo', category: 'asdsadasd', readTime: '20', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-      { title: "React 18 Features", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-      { title: "Best Practices for JavaScript", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-      { title: "Introduction to Next.js", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-    ],
-  projects: [
-    { title: "Portfolio Website", category: "hello", tech: ['asd', 'asd'], desc: "A personal portfolio website built with React and Tailwind CSS.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-    { title: "E-commerce Store", desc: "A full-stack e-commerce app with payment integration.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-    { title: "Blog Platform", desc: "A blogging platform with user authentication and content management.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-    { title: "Weather App", desc: "A simple weather app using React and OpenWeatherMap API.", img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-  ],
-  events: [
-    { title: "ReactJS Conference", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-    { title: "Frontend Masters Workshop", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-    { title: "JavaScript Meetup", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "#", date: '20 days' },
-  ],
-  others: [
-    { title: "GitHub Repo", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "https://github.com/", date: '20 days' },
-    { title: "LinkedIn Profile", desc: 'hello this is demo', img: "/assets/images/avatar.jpeg", link: "https://www.linkedin.com/", date: '20 days' },
-  ]
-}
+import myFaqs from '@/public/assets/data/Insights/faq.json'
+import updates from '@/public/assets/data/Insights/Insights.json'
+
 export default function page() {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
