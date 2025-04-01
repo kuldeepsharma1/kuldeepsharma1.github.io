@@ -118,44 +118,43 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
     return (
         <div
             ref={cardRef}
-            className={`group bg-white dark:bg-zinc-900 rounded-xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:shadow-xl transition-all duration-500 ${isListView ? 'flex flex-row gap-6' : 'flex flex-col'
+            className={`group bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 hover:shadow-2xl hover:shadow-neutral-300/10 dark:hover:shadow-neutral-800/10 transition-all duration-500 ${isListView ? 'flex flex-row gap-8' : 'flex flex-col'
                 }`}
         >
             {img && (
-                <div className={`overflow-hidden ${isListView ? 'w-72 h-48' : 'aspect-video'}`}>
+                <div className={`overflow-hidden ${isListView ? 'w-80 h-52' : 'aspect-[16/9]'}`}>
                     <div className="relative h-full w-full">
                         <Image
                             fill
                             src={img}
                             alt={title}
-                            className="object-cover object-top transition duration-700 group-hover:scale-105"
-                            sizes={isListView ? "192px" : "(max-width: 768px) 100vw, 50vw"}
+                            className="object-cover transition duration-700 group-hover:scale-105 group-hover:brightness-110"
+                            sizes={isListView ? "320px" : "(max-width: 768px) 100vw, 50vw"}
                             priority
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                 </div>
             )}
-            <div className="flex-1 p-6">
-                <div className="flex items-center gap-3 mb-3">
+            <div className="flex-1 p-8">
+                <div className="flex items-center gap-3 mb-4">
                     {'category' in item && item.category && (
-                        <Badge variant={'secondary'}>
-                            <Tag className="w-3 h-3 mr-1" />
+                        <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
                             {item.category}
                         </Badge>
                     )}
                     {'readTime' in item && item.readTime && (
-                        <span className="inline-flex items-center text-xs text-zinc-500 dark:text-zinc-400">
-                            <Clock2 className="w-3 h-3 mr-1" />
+                        <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
+                            <Clock2 className="w-3 h-3 mr-1 stroke-2" />
                             {item.readTime}
                         </span>
                     )}
                 </div>
-                <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2 group-hover:text-zinc-500 dark:group-hover:text-zinc-300 transition-colors">
+                <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
                     {title}
                 </h3>
                 {desc && (
-                    <p className="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed line-clamp-2">
+                    <p className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed line-clamp-2">
                         {desc}
                     </p>
                 )}
@@ -255,11 +254,11 @@ export default function Insights({ posts, projects, events, others }: InsightsDa
     }, []);
 
     return (
-        <div ref={mainRef} className="max-w-7xl mx-auto w-full px-4 py-16">
-            <div className="sticky top-0 z-10  backdrop-blur-lg py-4 mb-8">
-                <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-5xl sm:text-7xl uppercase font-bold text-zinc-900 dark:text-white">
-                        Insights
+        <div ref={mainRef} className="max-w-7xl mx-auto w-full px-4 py-24">
+            <div className="sticky top-0 z-10 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl py-6 mb-12">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+                    <h2 className="text-4xl md:text-7xl pb-1.5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
+                        Insights 
                     </h2>
                     <div className="flex items-center gap-2  rounded-lg p-1">
                         <button
@@ -283,14 +282,14 @@ export default function Insights({ posts, projects, events, others }: InsightsDa
                     <TabsList
                         ref={tabsListRef}
                         className={
-                            'w-fit relative border bg-background dark:border-neutral-800 border-neutral-300 rounded-full flex gap-5 items-center justify-center p-6 backdrop-blur-2xl'
+                            'inline-flex bg-neutral-100 dark:bg-neutral-900 p-1 rounded-full'
                         }
                     >
                         {['posts', 'projects', 'events', 'others'].map((value) => (
                             <TabsTrigger
                                 key={value}
                                 value={value}
-                                className="flex-1 px-4 py-2 text-xs font-[500] rounded-full  text-zinc-600 dark:text-white transition-colors data-[state=active]:text-white data-[state=active]:bg-black data-[state=active]:dark:bg-white data-[state=active]:dark:text-black hover:text-zinc-900 dark:hover:text-white text-nowrap duration-500"
+                                className="px-6 py-2.5 text-sm font-medium rounded-full transition-all data-[state=active]:bg-white dark:data-[state=active]:bg-neutral-800 data-[state=active]:shadow-sm"
                             >
                                 {value.charAt(0).toUpperCase() + value.slice(1)}
                             </TabsTrigger>

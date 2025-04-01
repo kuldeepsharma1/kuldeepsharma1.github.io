@@ -1,13 +1,40 @@
 'use client'
 import Cta from '@/components/custom/cta/Cta'
+import Faq, { FaqItem } from '@/components/custom/Faq/FAQ'
 import Insights from '@/components/custom/Insights/Insights'
 import TabSwitch from '@/components/custom/TabSwitch/TabSwitch'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 import { Check, } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
+const myFaqs: FaqItem[] = [
+  {
+    question: "What do I do?",
+    answer: "I develop apps like Rize and ImageNet, and work on open-source projects with Hytek Org.",
+  },
+  {
+    question: "What’s my background?",
+    answer: "B.Tech in Computer Science, ex-Junior Developer, now a Software Engineer at Hytek Org since 2020.",
+  },
+  {
+    question: "What tools do I use?",
+    answer: "Next.js, React Native, TypeScript, Laravel, Tailwind CSS, and more.",
+  },
+  {
+    question: "What’s Rize?",
+    answer: "A productivity app on Google Play with 3,000+ installs to help manage tasks.",
+  },
+  {
+    question: "Why open-source?",
+    answer: "I believe in collaboration and sharing knowledge, driving Hytek Org’s mission.",
+  },
+  {
+    question: "What’s next for me?",
+    answer: "Mastering AI/ML and building more impactful tech solutions.",
+  },
+];
+
 export default function page() {
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -21,21 +48,7 @@ export default function page() {
       transition: { staggerChildren: 0.2 },
     },
   };
-  const variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0 }
-  };
 
-  const stagger = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
   return (
     <div>
       <TabSwitch
@@ -57,7 +70,7 @@ export default function page() {
                   animate="visible"
                 >
                   <motion.div className="flex flex-col" variants={fadeInUp}>
-                    <Badge variant="outline"  className='w-fit mx-auto lg:ml-0 '>
+                    <Badge variant="outline" className='w-fit mx-auto lg:ml-0 '>
                       Insights
                     </Badge>
                     <div className="flex  flex-col  text-center lg:text-start">
@@ -65,7 +78,7 @@ export default function page() {
                         className="text-6xl lg:text-8xl  font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/40 dark:via-primary/50 dark:to-primary/10"
                         variants={fadeInUp}
                       >
-                       My Personal Journey
+                        My Personal Journey
                       </motion.h2>
                       <motion.p
                         className="text-xl leading-snug mt-4 text-zinc-600 dark:text-zinc-300"
@@ -157,83 +170,7 @@ export default function page() {
           ]}
         />
       </section>
-      <section>
-        <div className="w-full py-20 lg:py-40">
-          <div className="container mx-auto">
-            <motion.div
-              className="flex flex-col gap-10"
-              variants={stagger}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div
-                className="flex text-center justify-center items-center gap-4 flex-col"
-                variants={variants}
-              >
-                <Badge variant="outline">FAQ</Badge>
-                <div className="flex gap-2 flex-col">
-                  <motion.h4
-                    className="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular"
-                    variants={variants}
-                  >
-                    Questions About My Work
-                  </motion.h4>
-                  <motion.p
-                    className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl text-center"
-                    variants={variants}
-                  >
-                    I’m a software engineer building tools like Rize and contributing to open-source at Hytek Org.
-                  </motion.p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="max-w-3xl w-full mx-auto"
-                variants={variants}
-              >
-                <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="item-1">
-                    <AccordionTrigger>What do I do?</AccordionTrigger>
-                    <AccordionContent>
-                      I develop apps like Rize and ImageNet, and work on open-source projects with Hytek Org.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-2">
-                    <AccordionTrigger>What’s my background?</AccordionTrigger>
-                    <AccordionContent>
-                      B.Tech in Computer Science, ex-Junior Developer, now a Software Engineer at Hytek Org since 2020.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-3">
-                    <AccordionTrigger>What tools do I use?</AccordionTrigger>
-                    <AccordionContent>
-                      Next.js, React Native, TypeScript, Laravel, Tailwind CSS, and more.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-4">
-                    <AccordionTrigger>What’s Rize?</AccordionTrigger>
-                    <AccordionContent>
-                      A productivity app on Google Play with 3,000+ installs to help manage tasks.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-5">
-                    <AccordionTrigger>Why open-source?</AccordionTrigger>
-                    <AccordionContent>
-                      I believe in collaboration and sharing knowledge, driving Hytek Org’s mission.
-                    </AccordionContent>
-                  </AccordionItem>
-                  <AccordionItem value="item-6">
-                    <AccordionTrigger>What’s next for me?</AccordionTrigger>
-                    <AccordionContent>
-                      Mastering AI/ML and building more impactful tech solutions.
-                    </AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      <Faq title='Questions About My Work' description=' I’m a software engineer building tools like Rize and contributing to open-source at Hytek Org.' faqs={myFaqs} />
       <Cta badgeText="Let&apos;s Build Together"
         title="Want to collaborate on something amazing?"
         description="I&apos;m always open to working on innovative projects in machine learning, AI, and software development. Whether it&apos;s a startup idea, a research project, or a side hustle, let&apos;s build something great together."
