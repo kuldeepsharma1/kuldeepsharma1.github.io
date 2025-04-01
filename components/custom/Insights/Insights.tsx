@@ -1,0 +1,369 @@
+'use client';
+import React, { useRef, useState } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CustomEase } from "gsap/CustomEase";
+import { TextPlugin } from "gsap/TextPlugin";
+import { Flip } from "gsap/Flip";
+import Image from 'next/image';
+import { LayoutGrid, List, Tag, Clock2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+
+gsap.registerPlugin(ScrollTrigger, CustomEase, TextPlugin, Flip);
+CustomEase.create("customBounce", "M0,0 C0.14,0 0.27,0.06 0.32,0.87 0.35,1 0.4,1 1,1");
+
+
+export interface Post {
+    title: string;
+    img?: string;
+    link?: string;
+    category?: string;
+    readTime?: string;
+}
+export interface Project {
+    title: string;
+    desc: string;
+    img?: string;
+    link?: string;
+    category?: string;
+    tech?: string[];
+}
+export interface Event {
+    title: string;
+    img?: string;
+    link?: string;
+}
+export interface Other {
+    title: string;
+    img?: string;
+    link?: string;
+}
+export interface InsightsData {
+    posts: Post[];
+    projects: Project[];
+    events: Event[];
+    others: Other[];
+}
+
+interface ItemCardProps {
+    item: Post | Project | Event | Other;
+    ctaText: string;
+    isListView?: boolean;
+}
+const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
+    const { title, img, link } = item;
+    const desc = 'desc' in item ? item.desc : null;
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (cardRef.current) {
+            const card = cardRef.current;
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+            // Set initial state
+            gsap.set(card, { autoAlpha: 0, scale: 0.8 });
+            // Animate entrance
+            timeline
+                .to(card, {
+                    duration: 0.8,
+                    autoAlpha: 1,
+                    scale: 1,
+                    ease: "customBounce",
+                    clearProps: "scale"
+                })
+                .from(card.querySelector("h3") as Element, {
+                    duration: 0.6,
+                    y: 30,
+                    autoAlpha: 0,
+                    ease: "power3.out"
+                }, "-=0.4")
+                .from(card.querySelector("p") as Element, {
+                    duration: 0.6,
+                    y: 20,
+                    autoAlpha: 0,
+                    ease: "power2.out"
+                }, "-=0.3")
+                .from(card.querySelector("a") as Element, {
+                    duration: 0.4,
+                    x: -20,
+                    autoAlpha: 0,
+                    ease: "back.out(1.7)"
+                }, "-=0.2");
+
+            // Hover effect for image if available
+            if (img) {
+                const imageContainer = card.querySelector(".image-container");
+                if (imageContainer) {
+                    const hoverTween = gsap.to(imageContainer, {
+                        scale: 1.1,
+                        duration: 0.4,
+                        ease: "power2.out",
+                        paused: true
+                    });
+                    card.addEventListener("mouseenter", () => hoverTween.play());
+                    card.addEventListener("mouseleave", () => hoverTween.reverse());
+                }
+            }
+        }
+    }, []);
+
+    return (
+        <div
+            ref={cardRef}
+            className={`group bg-white dark:bg-zinc-900 rounded-xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:shadow-xl transition-all duration-500 ${isListView ? 'flex flex-row gap-6' : 'flex flex-col'
+                }`}
+        >
+            {img && (
+                <div className={`overflow-hidden ${isListView ? 'w-72 h-48' : 'aspect-video'}`}>
+                    <div className="relative h-full w-full">
+                        <Image
+                            fill
+                            src={img}
+                            alt={title}
+                            className="object-cover object-top transition duration-700 group-hover:scale-105"
+                            sizes={isListView ? "192px" : "(max-width: 768px) 100vw, 50vw"}
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                </div>
+            )}
+            <div className="flex-1 p-6">
+                <div className="flex items-center gap-3 mb-3">
+                    {'category' in item && item.category && (
+                        <Badge variant={'secondary'}>
+                            <Tag className="w-3 h-3 mr-1" />
+                            {item.category}
+                        </Badge>
+                    )}
+                    {'readTime' in item && item.readTime && (
+                        <span className="inline-flex items-center text-xs text-zinc-500 dark:text-zinc-400">
+                            <Clock2 className="w-3 h-3 mr-1" />
+                            {item.readTime}
+                        </span>
+                    )}
+                </div>
+                <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2 group-hover:text-zinc-500 dark:group-hover:text-zinc-300 transition-colors">
+                    {title}
+                </h3>
+                {desc && (
+                    <p className="text-zinc-600 dark:text-zinc-300 text-sm leading-relaxed line-clamp-2">
+                        {desc}
+                    </p>
+                )}
+                {'tech' in item && item.tech && (
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {item.tech.map((t, i) => (
+                            <Badge key={i} variant={'outline'}>
+                                {t}
+                            </Badge>
+                        ))}
+                    </div>
+                )}
+                {link && (
+                    <a
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center mt-4 text-sm font-medium ">
+                        <span className='hover:underline underline-offset-4'>{ctaText}</span>
+                        <span className="ml-1 transition-transform group-hover:translate-x-1 ">→</span>
+                    </a>
+                )}
+            </div>
+        </div>
+    );
+};
+const SkeletonLoader: React.FC<{ isListView?: boolean }> = ({ isListView }) => {
+    return (
+        <div className={`flex ${isListView ? 'flex-row gap-6' : 'flex-col'} animate-pulse`}>
+            <div className="bg-zinc-300 dark:bg-zinc-700 w-72 h-48 rounded-md"></div>
+            <div className="flex-1 p-6">
+                <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded-md mb-3"></div>
+                <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded-md mb-2"></div>
+                <div className="h-3 bg-zinc-300 dark:bg-zinc-700 rounded-md"></div>
+            </div>
+        </div>
+    );
+};
+
+
+export default function Insights({ posts, projects, events, others }: InsightsData) {
+    const [isListView, setIsListView] = useState(false);
+    const tabsListRef = useRef<HTMLDivElement>(null);
+    const mainRef = useRef<HTMLDivElement>(null);
+    const [loading, setLoading] = useState(false);
+
+    useGSAP(() => {
+        const ctx = gsap.context(() => {
+
+            gsap.from("h2", {
+                duration: 1,
+                y: -50,
+                opacity: 0,
+                ease: "elastic.out(1, 0.75)",
+                scrollTrigger: {
+                    trigger: mainRef.current,
+                    start: "top 60%",
+                }
+            });
+
+            const tabButtons = tabsListRef.current?.querySelectorAll("button");
+            if (tabButtons) {
+                tabButtons.forEach((btn, i) => {
+
+                    btn.addEventListener("mouseenter", () => {
+                        gsap.to(btn, {
+                            scale: 1.1,
+                            duration: 0.3,
+                            ease: "power2.out",
+
+                        });
+                    });
+
+                    btn.addEventListener("mouseleave", () => {
+                        gsap.to(btn, {
+                            scale: 1,
+                            duration: 0.3,
+                            ease: "power2.out",
+
+                        });
+                    });
+                    btn.addEventListener("click", () => {
+                        gsap.to(btn, {
+                            scale: 0.95,
+                            duration: 0.2,
+                            ease: "elastic.out(1, 0.3)",
+                            yoyo: true,
+                            repeat: 1
+                        });
+                    });
+
+
+                });
+            }
+        }, mainRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <div ref={mainRef} className="max-w-7xl mx-auto w-full px-4 py-16">
+            <div className="sticky top-0 z-10  backdrop-blur-lg py-4 mb-8">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-5xl sm:text-7xl uppercase font-bold text-zinc-900 dark:text-white">
+                        Insights
+                    </h2>
+                    <div className="flex items-center gap-2  rounded-lg p-1">
+                        <button
+                            onClick={() => setIsListView(false)}
+                            className={`p-2 rounded ${!isListView ? 'bg-white dark:bg-zinc-700 shadow-sm' : ''}`}
+                        >
+                            <LayoutGrid className="w-4 h-4" />
+                        </button>
+                        <button
+                            onClick={() => setIsListView(true)}
+                            className={`p-2 rounded ${isListView ? 'bg-white dark:bg-zinc-700 shadow-sm' : ''}`}
+                        >
+                            <List className="w-4 h-4" />
+                        </button>
+                    </div>
+                </div>
+                <Tabs defaultValue="posts" className="w-full  " onValueChange={(value) => {
+                    setLoading(true);
+                    setTimeout(() => setLoading(false), 1000);
+                }}>
+                    <TabsList
+                        ref={tabsListRef}
+                        className={
+                            'w-fit relative border bg-background dark:border-neutral-800 border-neutral-300 rounded-full flex gap-5 items-center justify-center p-6 backdrop-blur-2xl'
+                        }
+                    >
+                        {['posts', 'projects', 'events', 'others'].map((value) => (
+                            <TabsTrigger
+                                key={value}
+                                value={value}
+                                className="flex-1 px-4 py-2 text-xs font-[500] rounded-full  text-zinc-600 dark:text-white transition-colors data-[state=active]:text-white data-[state=active]:bg-black data-[state=active]:dark:bg-white data-[state=active]:dark:text-black hover:text-zinc-900 dark:hover:text-white text-nowrap duration-500"
+                            >
+                                {value.charAt(0).toUpperCase() + value.slice(1)}
+                            </TabsTrigger>
+                        ))}
+                    </TabsList>
+
+                    <div className='pt-10'>
+                        <TabsContent value="posts">
+                            <div className={`grid ${isListView ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-6`}>
+                                {loading ? (
+                                    Array.from({ length: 6 }).map((_, idx) => (
+                                        <SkeletonLoader key={`skeleton-post-${idx}`} isListView={isListView} />
+                                    ))
+                                ) : posts.length > 0 ? posts.map((post, idx) => (
+                                    <ItemCard key={`post-${idx}`} item={post} ctaText="Read article" isListView={isListView} />
+                                )) : (
+                                    <p className="col-span-full text-center text-zinc-500 dark:text-zinc-400 py-8">
+                                        No posts available yet
+                                    </p>
+                                )}
+                            </div>
+                        </TabsContent>
+
+                        <TabsContent value="projects">
+                            <div className={`grid ${isListView ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-6`}>
+                                {loading ? (
+                                    Array.from({ length: 6 }).map((_, idx) => (
+                                        <SkeletonLoader key={`skeleton-post-${idx}`} isListView={isListView} />
+                                    ))
+                                ) : projects.length > 0 ? projects.map((project, idx) => (
+                                    <ItemCard key={`project-${idx}`} item={project} ctaText="View Project" isListView={isListView} />
+                                )) : (
+                                    <p className="col-span-full text-center text-zinc-500 dark:text-zinc-400 py-8">
+                                        No projects showcased currently.
+                                    </p>
+                                )}
+                            </div>
+                        </TabsContent>
+
+                        <TabsContent value="events">
+                            <div className={`grid ${isListView ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-6`}>
+                                {loading ? (
+                                    Array.from({ length: 6 }).map((_, idx) => (
+                                        <SkeletonLoader key={`skeleton-post-${idx}`} isListView={isListView} />
+                                    ))
+                                ) : events.length > 0 ? events.map((event, idx) => (
+                                    <ItemCard key={`event-${idx}`} item={event} ctaText="Learn More" isListView={isListView} />
+                                )) : (
+                                    <p className="col-span-full text-center text-zinc-500 dark:text-zinc-400 py-8">
+                                        No events listed at the moment.
+                                    </p>
+                                )}
+                            </div>
+                        </TabsContent>
+
+                        <TabsContent value="others">
+                            <div className={`grid ${isListView ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-6`}>
+                                {loading ? (
+                                    Array.from({ length: 6 }).map((_, idx) => (
+                                        <SkeletonLoader key={`skeleton-post-${idx}`} isListView={isListView} />
+                                    ))
+                                ) : others.length > 0 ? others.map((other, idx) => (
+                                    <ItemCard key={`other-${idx}`} item={other} ctaText="More Info" isListView={isListView} />
+                                )) : (
+                                    <p className="col-span-full text-center text-zinc-500 dark:text-zinc-400 py-8">
+                                        No other items available.
+                                    </p>
+                                )}
+                            </div>
+                        </TabsContent>
+                    </div>
+                </Tabs>
+            </div>
+        </div>
+    );
+}
