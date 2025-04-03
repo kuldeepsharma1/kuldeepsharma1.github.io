@@ -95,35 +95,32 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
             className={`group bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 hover:shadow-2xl hover:shadow-neutral-300/10 dark:hover:shadow-neutral-800/10 transition-all duration-500 ${isListView ? 'flex flex-row gap-8' : 'flex flex-col'
                 }`}
         >
-            {img ? (
+            {img && (
                 <div className={`overflow-hidden ${isListView ? 'w-80 h-52' : 'aspect-[16/9]'}`}>
                     <div className="relative h-full w-full">
-                        <Image
-                            fill
-                            src={img}
-                            alt={title}
-                            className="object-cover transition duration-700 group-hover:scale-105 group-hover:brightness-110"
-                            sizes={isListView ? "320px" : "(max-width: 768px) 100vw, 50vw"}
-                            priority
-                        />
+                        {img ? (
+                            <Image
+                                fill
+                                src={img}
+                                alt={title}
+                                className="object-cover transition duration-700 group-hover:scale-105 group-hover:brightness-110"
+                                sizes={isListView ? "320px" : "(max-width: 768px) 100vw, 50vw"}
+                                priority
+                            />
+                        ) : (
+                            <FallbackImage alt={title} />
+                        )}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                </div>
-            ) : (
-
-                <div className={`overflow-hidden ${isListView ? 'w-80 h-52' : 'aspect-[16/9]'}`}>
-                    <FallbackImage alt={title} />
                 </div>
             )}
             <div className="flex-1 p-8">
                 <div className="flex items-center gap-3 mb-4">
-                    {'category' in item && item.category ? (
+                    {'category' in item && item.category && (
                         <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
                             <Tag className='size-2.5 mr-1' />    {item.category}
                         </Badge>
-                    ) : <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
-                        <Tag className='size-2.5 mr-1' /> General
-                    </Badge>}
+                    )}
                     {'date' in item && item.date && (
                         <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
                             <Calendar1 className="w-3 h-3 mr-1 stroke-2" />
