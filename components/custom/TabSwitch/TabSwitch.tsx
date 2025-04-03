@@ -28,7 +28,7 @@ export default function TabSwitch({
 
   return (
     <>
-      <section className="pb-10">
+      <section className="py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-12 gap-4">
             {/* Index Number */}
@@ -76,8 +76,8 @@ export default function TabSwitch({
             </div>
 
             {/* Description */}
-            <div className="col-span-full max-w-lg mx-auto mt-6">
-              <p className="text-lg text-black/80 dark:text-white/80">
+            <div className="col-span-full max-w-lg mx-auto sm:mt-6">
+              <p className="text-lg text-black/80 dark:text-white/80 text-justify">
                 {activeTab === 'primary'
                   ? primaryTab.description
                   : secondaryTab?.description

@@ -1,12 +1,9 @@
 "use client";
-
-
 import TabSwitch from "@/components/custom/TabSwitch/TabSwitch";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "@/components/ui/use-toast";
-
 import {
   Form,
   FormControl,
@@ -23,8 +20,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import Image from "next/image";
 import Updates from "@/components/custom/Contact/Updates";
+import data from '@/public/assets/data/Insights/Insights.json'
 
 const FormSchema = z.object({
   role: z.string().min(1, { message: "Please select your role." }),
@@ -34,60 +31,8 @@ const FormSchema = z.object({
     .email({ message: "Please enter a valid email address." }),
 });
 
-export type Testimonial = {
-  name: string;
-  role: string;
-  image: string;
-  quote: string;
-  opacity: number,
-}
-
-const testimonials: Testimonial[] = [
-  {
-    name: "Tina Yards",
-    role: "VP of Sales, Protocol",
-    image: "/testimonials/tina-yards.jpg",
-    quote:
-      "Thanks to Radiant, we’re finding new leads that we never would have found with legal methods.",
-    opacity: 1,
-  },
-  {
-    name: "Conor Neville",
-    role: "Head of Customer Success, TaxPal",
-    image: "/testimonials/conor-neville.jpg",
-    quote: "Radiant made undercutting all of our competitors an absolute breeze.",
-    opacity: 1,
-  },
-  {
-    name: "Amy Chase",
-    role: "Head of GTM, Pocket",
-    image: "/testimonials/amy-chase.jpg",
-    quote: "We closed a deal in literally a few minutes because we knew their exact budget.",
-    opacity: 1,
-  },
-  {
-    name: "Veronica Winton",
-    role: "CSO, Planeteria",
-    image: "/testimonials/veronica-winton.jpg",
-    quote: "We’ve managed to put two of our main competitors out of business in 6 months.",
-    opacity: 0.9,
-  },
-  {
-    name: "Dillon Lenora",
-    role: "VP of Sales, Detax",
-    image: "/testimonials/dillon-lenora.jpg",
-    quote: "I was able to replace 80% of my team with RadiantAI bots.",
-    opacity: 0.9
-  },
-  {
-    name: "Harriet Arron",
-    role: "Account Manager, Commit",
-    image: "/testimonials/harriet-arron.jpg",
-    quote: "I’ve smashed all my targets without having to speak to a lead in months.",
-    opacity: 0.9,
-  },
-];
 export default function Contact() {
+  const limitedInsights = data.posts.slice(0, 6);
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -106,17 +51,17 @@ export default function Contact() {
 
   return (
     <div>
-     
+
       <TabSwitch
         index={5}
         primaryTab={{
           title: "Contact",
-          count: 5,
+          count: '5',
           description:
             "I am an IT student and developer who is passionate about entrepreneurship. I love to explore new technologies and am currently developing cool projects.",
         }}
         primaryChildren={
-          <div className="grid grid-cols-1 sm:grid-cols-2 py-10 sm:py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 px-6 py-10 sm:py-20">
             <div className="max-w-sm">
               <h1 className="uppercase text-7xl font-bold tracking-wide">
                 how can <br /> i help you?
@@ -243,10 +188,10 @@ export default function Contact() {
           </div>
         }
       />
-     
-    <section className="px-4 py-10">
-    <Updates title="View My Latest Insights" testimonials={testimonials} />
-    </section>
+
+      <section className="px-4 py-10">
+        <Updates title="View My Latest Insights" posts={limitedInsights} />
+      </section>
     </div>
   );
 }

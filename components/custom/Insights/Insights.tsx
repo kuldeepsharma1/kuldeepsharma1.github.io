@@ -17,11 +17,12 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { InsightsData, Other, Event, Post, Project } from '@/types/Insights';
+import FallbackImage from '../FallbackImg';
 gsap.registerPlugin(ScrollTrigger, CustomEase, TextPlugin, Flip);
 CustomEase.create("customBounce", "M0,0 C0.14,0 0.27,0.06 0.32,0.87 0.35,1 0.4,1 1,1");
 
 interface ItemCardProps {
-    item: Post | Project | Event| Other;
+    item: Post | Project | Event | Other;
     ctaText: string;
     isListView?: boolean;
 }
@@ -94,7 +95,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
             className={`group bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 hover:shadow-2xl hover:shadow-neutral-300/10 dark:hover:shadow-neutral-800/10 transition-all duration-500 ${isListView ? 'flex flex-row gap-8' : 'flex flex-col'
                 }`}
         >
-            {img && (
+            {img ? (
                 <div className={`overflow-hidden ${isListView ? 'w-80 h-52' : 'aspect-[16/9]'}`}>
                     <div className="relative h-full w-full">
                         <Image
@@ -108,14 +109,21 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                 </div>
+            ) : (
+
+                <div className={`overflow-hidden ${isListView ? 'w-80 h-52' : 'aspect-[16/9]'}`}>
+                    <FallbackImage alt={title} />
+                </div>
             )}
             <div className="flex-1 p-8">
                 <div className="flex items-center gap-3 mb-4">
-                    {'category' in item && item.category && (
+                    {'category' in item && item.category ? (
                         <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
                             <Tag className='size-2.5 mr-1' />    {item.category}
                         </Badge>
-                    )}
+                    ) : <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
+                        <Tag className='size-2.5 mr-1' /> General
+                    </Badge>}
                     {'date' in item && item.date && (
                         <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
                             <Calendar1 className="w-3 h-3 mr-1 stroke-2" />
@@ -142,23 +150,23 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                         </div>
                     )}
                     {'readTime' in item && item.readTime && (
-                         <TooltipProvider>
-                         <Tooltip>
-                             <TooltipTrigger asChild>
-                                 <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center transition-colors hover:text-neutral-700 dark:hover:text-neutral-200">
-                                     <Clock2 className="w-3 h-3 mr-1 stroke-2 text-neutral-600 dark:text-neutral-300" />
-                                     {item.readTime}
-                                 </span>
-                             </TooltipTrigger>
-                             <TooltipContent className="w-auto  rounded-full shadow-md bg-white dark:bg-zinc-800 text-sm text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-zinc-700">
-                                 <div className="flex items-center space-x-2">
-                                     <Clock2 className="w-4 h-4 text-neutral-600 dark:text-neutral-300" />
-                                     <p className="font-medium">Time to Read This</p>
-                                 </div>
-                            
-                             </TooltipContent>
-                         </Tooltip>
-                     </TooltipProvider>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center transition-colors hover:text-neutral-700 dark:hover:text-neutral-200">
+                                        <Clock2 className="w-3 h-3 mr-1 stroke-2 text-neutral-600 dark:text-neutral-300" />
+                                        {item.readTime}
+                                    </span>
+                                </TooltipTrigger>
+                                <TooltipContent className="w-auto  rounded-full shadow-md bg-white dark:bg-zinc-800 text-sm text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-zinc-700">
+                                    <div className="flex items-center space-x-2">
+                                        <Clock2 className="w-4 h-4 text-neutral-600 dark:text-neutral-300" />
+                                        <p className="font-medium">Time to Read This</p>
+                                    </div>
+
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
                     )}
                     {link && (
                         <a

@@ -29,7 +29,7 @@ export default function page() {
         index={4}
         primaryTab={{
           title: "Insights",
-          count: 4,
+          count: '4',
           description: "I am a IT student and developer who is passionate about entrepreneurship. and I loves to explore new technologies. I am currently developing cool projects."
         }}
 
@@ -131,7 +131,7 @@ export default function page() {
       <Cta badgeText="Let&apos;s Build Together"
         title="Want to collaborate on something amazing?"
         description="I&apos;m always open to working on innovative projects in machine learning, AI, and software development. Whether it&apos;s a startup idea, a research project, or a side hustle, let&apos;s build something great together."
-        readMoreLink="/insights"
+
         contactLink="/contact"
       />
     </div>
