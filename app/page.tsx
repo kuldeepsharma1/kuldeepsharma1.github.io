@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <div >
 
-      <section>
+      {/* <section>
         <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden ">
 
           <Image priority src={'/assets/images/my.png'} width={30} height={30} alt="hello" className="w-32 h-32 rounded-3xl" />
@@ -73,7 +73,7 @@ export default function Home() {
           </Button>
         </div>
 
-      </section>
+      </section> */}
       {/*   <section>
         <div className="w-full">
           <div className="container mx-auto">

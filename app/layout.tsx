@@ -6,6 +6,7 @@ import Header from "@/components/custom/Header/Header";
 import { Toaster } from "@/components/ui/toaster";
 import { ScrollProgress } from "@/components/custom/Header/ScrollProgress";
 import { Assistant } from 'next/font/google'
+import TransitionWrapper from "@/components/custom/TransitionWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,10 +31,8 @@ export default function RootLayout({
           rel="apple-touch-icon"
           href="/assets/seo/apple-touch-icon.png"
         />
-
         <meta name="author" content="Kuldeep Sharma" />
         <meta name="robots" content="index, follow" />
-
       </head>
       <body className="tracking-tight" >
         <ThemeProvider
@@ -42,11 +41,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+           <ScrollProgress />
+          <TransitionWrapper>
           <div className="max-w-7xl mx-auto">
             <header className="px-2 pt-2.5 " >
               <Header />
             </header>
-            <ScrollProgress />
+           
             <main className="min-h-screen ">
               {children}
             </main>
@@ -55,7 +56,7 @@ export default function RootLayout({
               <Footer />
             </footer>
           </div>
-
+          </TransitionWrapper>
         </ThemeProvider>
       </body>
     </html>

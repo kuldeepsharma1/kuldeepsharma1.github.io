@@ -133,8 +133,9 @@ const config = {
         "background-shine": "background-shine 2s linear infinite",
         "background-shine-once": "background-shine 2s linear "
       },
-      backgroundImage:{
+      backgroundImage: {
         'my': "url('https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+     
       }
     },
   },
