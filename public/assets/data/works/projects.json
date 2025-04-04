@@ -2,6 +2,7 @@
   {
     "title": "Portfolio Website",
     "slug": "portfolio-website",
+    "type": "personal",
     "description": "A personal portfolio website built with React and Tailwind CSS to showcase skills, projects, and professional background.",
     "detailedDescription": "This project is a fully responsive and modern personal portfolio website built using React for dynamic user experience and Tailwind CSS for streamlined styling. It includes multiple sections such as About, Projects, Skills, and Contact. The site also integrates smooth scrolling, animations, and dark/light mode toggles to enhance user interaction.",
     "category": "Web Development",
@@ -59,6 +60,199 @@
       "demoMode": true,
       "documentationLink": "https://docs.example.com/portfolio-website",
       "blogPost": "https://blog.example.com/portfolio-website-development"
-    }
+    },
+    "featured": true
+  },
+  {
+    "title": "Portfolio Website 1",
+    "slug": "portfolio-website-1",
+    "type": "personal",
+    "description": "A personal portfolio website built with React and Tailwind CSS to showcase skills, projects, and professional background.",
+    "detailedDescription": "This project is a fully responsive and modern personal portfolio website built using React for dynamic user experience and Tailwind CSS for streamlined styling. It includes multiple sections such as About, Projects, Skills, and Contact. The site also integrates smooth scrolling, animations, and dark/light mode toggles to enhance user interaction.",
+    "category": "Web Development",
+    "status": "Completed",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Node.js"
+    ],
+    "images": {
+      "thumbnail": "/assets/images/avatar.jpeg",
+      "screenshots": [
+        "/assets/images/screenshot1.jpeg",
+        "/assets/images/screenshot2.jpeg",
+        "/assets/images/screenshot3.jpeg"
+      ]
+    },
+    "links": {
+      "live": "https://example.com",
+      "source": "https://github.com/username/portfolio-website",
+      "demoVideo": "https://www.youtube.com/watch?v=example"
+    },
+    "releaseDate": "2025-03-15",
+    "lastUpdated": "2025-04-01",
+    "duration": "3 months",
+    "role": "Full-Stack Developer",
+    "features": [
+      "Responsive design optimized for mobile and desktop",
+      "Interactive UI components with smooth animations",
+      "Dark and light mode toggle",
+      "Contact form integration with backend API",
+      "SEO optimized structure and content"
+    ],
+    "challenges": [
+      "Implementing smooth animations across different browsers",
+      "Ensuring consistent performance on mobile devices",
+      "Managing state effectively in a complex UI"
+    ],
+    "team": [
+      {
+        "name": "John Doe",
+        "role": "Full-Stack Developer",
+        "responsibilities": "Lead development, state management, API integration"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "UI/UX Designer",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+      }
+    ],
+    "additionalInfo": {
+      "demoMode": true,
+      "documentationLink": "https://docs.example.com/portfolio-website",
+      "blogPost": "https://blog.example.com/portfolio-website-development"
+    },
+    "featured": false
+  },
+  {
+    "title": "Portfolio Work Website",
+    "slug": "portfolio-website-work",
+    "type": "work",
+    "description": "A personal portfolio website built with React and Tailwind CSS to showcase skills, projects, and professional background.",
+    "detailedDescription": "This project is a fully responsive and modern personal portfolio website built using React for dynamic user experience and Tailwind CSS for streamlined styling. It includes multiple sections such as About, Projects, Skills, and Contact. The site also integrates smooth scrolling, animations, and dark/light mode toggles to enhance user interaction.",
+    "category": "Web Development",
+    "status": "Completed",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Node.js"
+    ],
+    "images": {
+      "thumbnail": "/assets/images/avatar.jpeg",
+      "screenshots": [
+        "/assets/images/screenshot1.jpeg",
+        "/assets/images/screenshot2.jpeg",
+        "/assets/images/screenshot3.jpeg"
+      ]
+    },
+    "links": {
+      "live": "https://example.com",
+      "source": "https://github.com/username/portfolio-website",
+      "demoVideo": "https://www.youtube.com/watch?v=example"
+    },
+    "releaseDate": "2025-03-15",
+    "lastUpdated": "2025-04-01",
+    "duration": "3 months",
+    "role": "Full-Stack Developer",
+    "features": [
+      "Responsive design optimized for mobile and desktop",
+      "Interactive UI components with smooth animations",
+      "Dark and light mode toggle",
+      "Contact form integration with backend API",
+      "SEO optimized structure and content"
+    ],
+    "challenges": [
+      "Implementing smooth animations across different browsers",
+      "Ensuring consistent performance on mobile devices",
+      "Managing state effectively in a complex UI"
+    ],
+    "team": [
+      {
+        "name": "John Doe",
+        "role": "Full-Stack Developer",
+        "responsibilities": "Lead development, state management, API integration"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "UI/UX Designer",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+      }
+    ],
+    "additionalInfo": {
+      "demoMode": true,
+      "documentationLink": "https://docs.example.com/portfolio-website",
+      "blogPost": "https://blog.example.com/portfolio-website-development"
+    },
+    "featured": true
+  },
+  {
+    "title": "Portfolio Work Website 1",
+    "slug": "portfolio-website-work-1",
+    "type": "work",
+    "description": "A personal portfolio website built with React and Tailwind CSS to showcase skills, projects, and professional background.",
+    "detailedDescription": "This project is a fully responsive and modern personal portfolio website built using React for dynamic user experience and Tailwind CSS for streamlined styling. It includes multiple sections such as About, Projects, Skills, and Contact. The site also integrates smooth scrolling, animations, and dark/light mode toggles to enhance user interaction.",
+    "category": "Web Designing",
+    "status": "Completed",
+    "technologies": [
+      "React",
+      "Tailwind CSS",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "Node.js"
+    ],
+    "images": {
+      "thumbnail": "/assets/images/avatar.jpeg",
+      "screenshots": [
+        "/assets/images/screenshot1.jpeg",
+        "/assets/images/screenshot2.jpeg",
+        "/assets/images/screenshot3.jpeg"
+      ]
+    },
+    "links": {
+      "live": "https://example.com",
+      "source": "https://github.com/username/portfolio-website",
+      "demoVideo": "https://www.youtube.com/watch?v=example"
+    },
+    "releaseDate": "2025-03-15",
+    "lastUpdated": "2025-04-01",
+    "duration": "3 months",
+    "role": "Full-Stack Developer",
+    "features": [
+      "Responsive design optimized for mobile and desktop",
+      "Interactive UI components with smooth animations",
+      "Dark and light mode toggle",
+      "Contact form integration with backend API",
+      "SEO optimized structure and content"
+    ],
+    "challenges": [
+      "Implementing smooth animations across different browsers",
+      "Ensuring consistent performance on mobile devices",
+      "Managing state effectively in a complex UI"
+    ],
+    "team": [
+      {
+        "name": "John Doe",
+        "role": "Full-Stack Developer",
+        "responsibilities": "Lead development, state management, API integration"
+      },
+      {
+        "name": "Jane Smith",
+        "role": "UI/UX Designer",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+      }
+    ],
+    "additionalInfo": {
+      "demoMode": true,
+      "documentationLink": "https://docs.example.com/portfolio-website",
+      "blogPost": "https://blog.example.com/portfolio-website-development"
+    },
+    "featured": false
   }
 ]

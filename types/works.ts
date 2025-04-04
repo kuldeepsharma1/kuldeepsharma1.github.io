@@ -24,6 +24,7 @@ export interface AdditionalInfo {
 export interface DeveloperProject {
     title: string;
     slug: string;
+    type: 'personal' | 'work';
     description: string;
     detailedDescription: string;
     category: string;

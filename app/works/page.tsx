@@ -2,8 +2,13 @@ import Cta from '@/components/custom/cta/Cta'
 import TabSwitch from '@/components/custom/TabSwitch/TabSwitch'
 import Primary from '@/components/custom/Works/Primary'
 import Secondary from '@/components/custom/Works/Secondary'
+import projects from '@/public/assets/data/works/projects.json'
+import { DeveloperProject } from '@/types/works'
 
-export default function page() {
+
+export default function Page() {
+  const workItems = projects.filter((item) => item.type === 'work') as DeveloperProject[]
+  const personalItems = projects.filter((item) => item.type === 'personal') as DeveloperProject[]
   return (
     <div>
       <TabSwitch
@@ -19,10 +24,10 @@ export default function page() {
           description: "Side projects and experiments I've built."
         }}
         primaryChildren={
-         <Primary/>
+          <Primary items={workItems} />
         }
         secondaryChildren={
-          <Secondary/>
+          <Secondary items={personalItems} />
         }
       />
       <Cta badgeText="Let&apos;s Build Together"

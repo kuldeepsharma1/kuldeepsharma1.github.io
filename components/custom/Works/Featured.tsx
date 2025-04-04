@@ -7,6 +7,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import FallbackImage from '../FallbackImg';
+import Link from 'next/link';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,9 +35,8 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
     });
     tl.from('.featured-content .badge', {
       y: 30,
-      opacity: 0,
       duration: 0.8,
-      ease: "back.out(1.7)",
+      ease: "back.inOut(1.7)",
 
     })
       .from('.featured-content h2', {
@@ -81,7 +81,7 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
         <div className="flex flex-col-reverse lg:flex-row justify-between border-2 border-black/25 dark:border-white/25  rounded-3xl bg-white dark:bg-black shadow-3xl transition-all duration-500 hover:shadow-4xl sm:py-4">
           <div className="lg:w-1/2 px-4 pb-6 sm:p-8  flex flex-col justify-between">
             <div className="featured-content max-w-lg sm:pt-10">
-              <Badge className="py-1.5 text-base font-semibold px-4 ">
+              <Badge className="py-1.5 text-base font-semibold px-4 badge ">
                 <Tag className="size-3 mr-1 " />{category}
               </Badge>
               <div className="space-y-4 pt-4">
@@ -92,24 +92,24 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
                   {desc}
                 </p>
               </div>
-              <div className="flex flex-wrap  pt-10">
+              <div className="flex flex-wrap gap-1  pt-10">
                 {tags && tags.map((tag, index) =>
                   <Badge key={index}
                     variant={'outline'}
-                    className="border-2 border-black/40 dark:border-white/40 px-4 py-1.5 rounded-full text-sm bg-transparent transition-transform cursor-pointer hover:bg-foreground hover:text-primary-foreground"
+                    className="badge border-2 border-black/40 dark:border-white/40 px-4 py-1.5 rounded-full text-sm bg-transparent transition-transform cursor-pointer hover:bg-foreground hover:text-primary-foreground"
                   >
                     {tag}
                   </Badge>
                 )}
               </div>
             </div>
-            <a
+            <Link
               href={linkurl}
               className="inline-flex justify-end lg:justify-start items-center gap-2 text-black dark:text-white font-semibold text-lg mt-8 transition-all duration-300 group hover:underline underline-offset-4"
             >
               {linktext ? linktext : 'Explore Project'}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-rotate-45 transition-transform duration-300" />
-            </a>
+            </Link>
           </div>
           <div className="lg:w-1/2 featured-image  relative overflow-hidden group flex justify-end md:pr-6 mx-auto">
             <div className='sm:bg-zinc-100 sm:dark:bg-zinc-900  rounded-lg  w-fit p-5'>

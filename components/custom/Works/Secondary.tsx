@@ -2,12 +2,27 @@
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import Featured from './Featured'
+import { DeveloperProject } from '@/types/works'
 
-export default function Secondary() {
+
+export default function Secondary({ items }: { items: DeveloperProject[] }) {
+    if (!items || items.length === 0) return null
+
+    const featuredItem = items.find(item => item.featured)
+    const nonFeaturedItems = items.filter(item => !item.featured)
     return (
         <div>
-            <Featured title='k;jhasdkh;dfbksdbfsdbfdbb dsfbsd sdf sdfob'desc='he;;sakdjfsdad sad;fnds'category='tech'linkurl='https://hytek.org.in'img='/assets/images/avatar.jpeg'imgdesc='sdsadsad' tags={['hello','a']} />
-            {Array.from({ length: 10 }, (_, index) => (
+            {featuredItem && (
+                <Featured
+                    title={featuredItem.title}
+                    desc={featuredItem.description}
+                    category={featuredItem.category}
+                    linkurl={`/works/${featuredItem.slug}`}
+                    img={featuredItem.images.thumbnail || '/assets/images/avatar.jpeg'}
+                    tags={featuredItem.technologies}
+                />
+            )}
+            {Array.from({ length: 1 }, (_, index) => (
                 <div key={index}><div className="w-full py-20 lg:py-40">
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2">
