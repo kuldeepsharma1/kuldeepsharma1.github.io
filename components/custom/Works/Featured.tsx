@@ -34,7 +34,7 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
       },
     });
     tl.from('.featured-content .badge', {
-      y: 30,
+      y: 10,
       duration: 0.8,
       ease: "back.inOut(1.7)",
 
@@ -92,15 +92,18 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
                   {desc}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1  pt-10">
-                {tags && tags.map((tag, index) =>
-                  <Badge key={index}
-                    variant={'outline'}
-                    className="badge border-2 border-black/40 dark:border-white/40 px-4 py-1.5 rounded-full text-sm bg-transparent transition-transform cursor-pointer hover:bg-foreground hover:text-primary-foreground"
-                  >
-                    {tag}
-                  </Badge>
-                )}
+              <div className=" pt-6">
+                <h4 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">TECHNOLOGIES</h4>
+                <div className="flex flex-wrap gap-2">
+                  {tags && tags.map((tag, index) => (
+                    <Badge key={index}
+                      variant={'outline'}
+                      className="badge border-2 border-black/40 dark:border-white/40 px-4 py-1.5 rounded-full text-sm bg-transparent transition-transform cursor-pointer hover:bg-foreground hover:text-primary-foreground"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
             </div>
             <Link
@@ -111,18 +114,19 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-rotate-45 transition-transform duration-300" />
             </Link>
           </div>
-          <div className="lg:w-1/2 featured-image  relative overflow-hidden group flex justify-end md:pr-6 mx-auto">
-            <div className='sm:bg-zinc-100 sm:dark:bg-zinc-900  rounded-lg  w-fit p-5'>
+          <div className="lg:w-1/2 featured-image relative overflow-hidden group flex justify-end md:pr-6 mx-auto">
+            <div className='sm:bg-zinc-100 sm:dark:bg-zinc-900 rounded-lg w-fit p-5 relative'>
               {img ? <Image
                 src={img}
                 alt={title}
-                className="object-cover rounded-lg transition-transform  h-full group-hover:scale-105"
+                className="object-cover rounded-lg transition-transform h-full group-hover:scale-105"
                 width={500}
                 height={400}
                 priority
-              /> : <FallbackImage alt={title} className="object-cover rounded-lg transition-transform w-96 h-full group-hover:scale-105" />}
-              <div className="absolute  inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 flex items-end justify-start p-8">
-                <span className="mx-auto text-white text-xl text-center font-bold bg-black/50 px-4 py-2 rounded-full">{imgdesc ? imgdesc : 'Dive into the Details'}</span>
+              />
+                : <FallbackImage alt={title} className="object-cover rounded-lg transition-transform w-96 h-full group-hover:scale-105" />}
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
+                <span className="text-white text-xl text-center font-bold bg-black/50 px-4 py-2 rounded-full">{imgdesc ? imgdesc : 'Dive into the Details'}</span>
               </div>
             </div>
           </div>

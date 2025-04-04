@@ -30,21 +30,10 @@ export default function RootLayout({
           rel="apple-touch-icon"
           href="/assets/seo/apple-touch-icon.png"
         />
-        <meta name="keywords" content="{{ $keywords ?? 'default, keywords' }}" />
+
         <meta name="author" content="Kuldeep Sharma" />
         <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="{{ $ogtitle }}" />
-        <meta property="og:description" content="{{ $ogdesc }}" />
-        <meta property="og:image" content="/public/assets/images/my.png" />
-        <meta property="og:url" content="{{ $ogurl }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="{{ $twtTitle }}" />
-        <meta name="twitter:description" content="{{ $twtDesc }}" />
-        <meta name="twitter:image" content="/public/assets/images/my.png" />
-        <meta name="twitter:site" content="@HYTEK21" />
-        <link rel="canonical" href="https://kuldeepsharma1.github.io"></link>
+
       </head>
       <body className="tracking-tight" >
         <ThemeProvider

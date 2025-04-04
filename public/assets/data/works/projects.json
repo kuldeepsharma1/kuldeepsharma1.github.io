@@ -18,9 +18,9 @@
     "images": {
       "thumbnail": "/assets/images/avatar.jpeg",
       "screenshots": [
-        "/assets/images/screenshot1.jpeg",
-        "/assets/images/screenshot2.jpeg",
-        "/assets/images/screenshot3.jpeg"
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg"
       ]
     },
     "links": {
@@ -30,8 +30,7 @@
     },
     "releaseDate": "2025-03-15",
     "lastUpdated": "2025-04-01",
-    "duration": "3 months",
-    "role": "Full-Stack Developer",
+
     "features": [
       "Responsive design optimized for mobile and desktop",
       "Interactive UI components with smooth animations",
@@ -48,16 +47,19 @@
       {
         "name": "John Doe",
         "role": "Full-Stack Developer",
-        "responsibilities": "Lead development, state management, API integration"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Lead development, state management, API integration",
+        "link": "#"
       },
       {
         "name": "Jane Smith",
         "role": "UI/UX Designer",
-        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts",
+        "link": "#"
       }
     ],
     "additionalInfo": {
-      "demoMode": true,
       "documentationLink": "https://docs.example.com/portfolio-website",
       "blogPost": "https://blog.example.com/portfolio-website-development"
     },
@@ -82,9 +84,9 @@
     "images": {
       "thumbnail": "/assets/images/avatar.jpeg",
       "screenshots": [
-        "/assets/images/screenshot1.jpeg",
-        "/assets/images/screenshot2.jpeg",
-        "/assets/images/screenshot3.jpeg"
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg"
       ]
     },
     "links": {
@@ -94,8 +96,7 @@
     },
     "releaseDate": "2025-03-15",
     "lastUpdated": "2025-04-01",
-    "duration": "3 months",
-    "role": "Full-Stack Developer",
+
     "features": [
       "Responsive design optimized for mobile and desktop",
       "Interactive UI components with smooth animations",
@@ -112,16 +113,19 @@
       {
         "name": "John Doe",
         "role": "Full-Stack Developer",
-        "responsibilities": "Lead development, state management, API integration"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Lead development, state management, API integration",
+        "link": "#"
       },
       {
         "name": "Jane Smith",
         "role": "UI/UX Designer",
-        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts",
+        "link": "#"
       }
     ],
     "additionalInfo": {
-      "demoMode": true,
       "documentationLink": "https://docs.example.com/portfolio-website",
       "blogPost": "https://blog.example.com/portfolio-website-development"
     },
@@ -146,9 +150,9 @@
     "images": {
       "thumbnail": "/assets/images/avatar.jpeg",
       "screenshots": [
-        "/assets/images/screenshot1.jpeg",
-        "/assets/images/screenshot2.jpeg",
-        "/assets/images/screenshot3.jpeg"
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg"
       ]
     },
     "links": {
@@ -158,8 +162,7 @@
     },
     "releaseDate": "2025-03-15",
     "lastUpdated": "2025-04-01",
-    "duration": "3 months",
-    "role": "Full-Stack Developer",
+
     "features": [
       "Responsive design optimized for mobile and desktop",
       "Interactive UI components with smooth animations",
@@ -176,16 +179,19 @@
       {
         "name": "John Doe",
         "role": "Full-Stack Developer",
-        "responsibilities": "Lead development, state management, API integration"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Lead development, state management, API integration",
+        "link": "#"
       },
       {
         "name": "Jane Smith",
         "role": "UI/UX Designer",
-        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts",
+        "link": "#"
       }
     ],
     "additionalInfo": {
-      "demoMode": true,
       "documentationLink": "https://docs.example.com/portfolio-website",
       "blogPost": "https://blog.example.com/portfolio-website-development"
     },
@@ -210,9 +216,9 @@
     "images": {
       "thumbnail": "/assets/images/avatar.jpeg",
       "screenshots": [
-        "/assets/images/screenshot1.jpeg",
-        "/assets/images/screenshot2.jpeg",
-        "/assets/images/screenshot3.jpeg"
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg",
+        "/assets/images/avatar.jpeg"
       ]
     },
     "links": {
@@ -222,8 +228,7 @@
     },
     "releaseDate": "2025-03-15",
     "lastUpdated": "2025-04-01",
-    "duration": "3 months",
-    "role": "Full-Stack Developer",
+
     "features": [
       "Responsive design optimized for mobile and desktop",
       "Interactive UI components with smooth animations",
@@ -240,16 +245,19 @@
       {
         "name": "John Doe",
         "role": "Full-Stack Developer",
-        "responsibilities": "Lead development, state management, API integration"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Lead development, state management, API integration",
+        "link": "#"
       },
       {
         "name": "Jane Smith",
         "role": "UI/UX Designer",
-        "responsibilities": "Design mockups, user experience optimization, responsive layouts"
+        "pic": "/assets/images/avater.jpeg",
+        "responsibilities": "Design mockups, user experience optimization, responsive layouts",
+        "link": "#"
       }
     ],
     "additionalInfo": {
-      "demoMode": true,
       "documentationLink": "https://docs.example.com/portfolio-website",
       "blogPost": "https://blog.example.com/portfolio-website-development"
     },

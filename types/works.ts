@@ -1,7 +1,9 @@
 export interface TeamMember {
     name: string;
+    pic?: string;
     role: string;
-    responsibilities: string;
+    responsibilities?: string;
+    link: string;
 }
 
 export interface Images {
@@ -10,15 +12,15 @@ export interface Images {
 }
 
 export interface Links {
-    live: string;
+    live?: string;
     source: string;
-    demoVideo: string;
+    demoVideo?: string;
 }
 
 export interface AdditionalInfo {
-    demoMode: boolean;
-    documentationLink: string;
-    blogPost: string;
+
+    documentationLink?: string;
+    blogPost?: string;
 }
 
 export interface DeveloperProject {
@@ -33,12 +35,10 @@ export interface DeveloperProject {
     images: Images;
     links: Links;
     releaseDate: string;
-    lastUpdated: string;
-    duration: string;
-    role: string;
+    lastUpdated?: string;
     features: string[];
-    challenges: string[];
-    team: TeamMember[];
-    additionalInfo: AdditionalInfo;
+    challenges?: string[];
+    team?: TeamMember[];
+    additionalInfo?: AdditionalInfo;
     featured?: boolean;
 }
