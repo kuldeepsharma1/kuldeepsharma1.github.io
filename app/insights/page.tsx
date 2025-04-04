@@ -13,6 +13,7 @@ import updates from '@/public/assets/data/Insights/Insights.json'
 import projects from '@/public/assets/data/works/projects.json'
 
 export default function page() {
+  const data = projects
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
@@ -123,7 +124,7 @@ export default function page() {
       <section >
         <Insights
           posts={updates.posts}
-          projects={projects}
+          projects={data}
           events={updates.events}
           others={updates.others}
         />

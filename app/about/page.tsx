@@ -31,7 +31,7 @@ export default function AboutPage() {
         index={2}
         primaryTab={{
           title: "About",
-          count: 2,
+          count: '2',
           description: "Software Engineer at Hytek Org. Passionate about coding, open-source, and building impactful tech solutions."
         }}
         primaryChildren={
