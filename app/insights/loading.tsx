@@ -10,7 +10,6 @@ export default function Loading() {
             <div className="col-span-full pt-10 flex flex-col justify-center items-center sm:flex-row gap-6 sm:gap-10">
               <div className="flex flex-col">
                 <div className="w-96 h-20 bg-zinc-200 dark:bg-zinc-800 rounded-full mb-2" />
-
               </div>
             </div>
             <div className="col-span-full max-w-2xl mx-auto">

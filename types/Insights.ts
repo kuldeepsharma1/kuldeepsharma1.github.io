@@ -1,3 +1,5 @@
+import { DeveloperProject } from "./works";
+
 export interface Post {
     title: string;
     desc: string;
@@ -7,15 +9,7 @@ export interface Post {
     readTime?: string;
     date: string;
 }
-export interface Project {
-    title: string;
-    desc: string;
-    img?: string;
-    link?: string;
-    category?: string;
-    tech?: string[];
-    date: string;
-}
+
 export interface Event {
     title: string;
     desc: string;
@@ -32,7 +26,7 @@ export interface Other {
 }
 export interface InsightsData {
     posts: Post[];
-    projects: Project[];
+    projects: DeveloperProject[];
     events: Event[];
     others: Other[];
 }

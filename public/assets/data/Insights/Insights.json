@@ -31,38 +31,6 @@
       "date": "20 days"
     }
   ],
-  "projects": [
-    {
-      "title": "Portfolio Website",
-      "category": "hello",
-      "tech": ["asd", "asd"],
-      "desc": "A personal portfolio website built with React and Tailwind CSS.",
-      "img": "/assets/images/avatar.jpeg",
-      "link": "#",
-      "date": "20 days"
-    },
-    {
-      "title": "E-commerce Store",
-      "desc": "A full-stack e-commerce app with payment integration.",
-      "img": "/assets/images/avatar.jpeg",
-      "link": "#",
-      "date": "20 days"
-    },
-    {
-      "title": "Blog Platform",
-      "desc": "A blogging platform with user authentication and content management.",
-      "img": "/assets/images/avatar.jpeg",
-      "link": "#",
-      "date": "20 days"
-    },
-    {
-      "title": "Weather App",
-      "desc": "A simple weather app using React and OpenWeatherMap API.",
-      "img": "/assets/images/avatar.jpeg",
-      "link": "#",
-      "date": "20 days"
-    }
-  ],
   "events": [
     {
       "title": "ReactJS Conference",

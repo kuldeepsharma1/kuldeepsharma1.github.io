@@ -6,8 +6,8 @@ import Featured from './Featured'
 export default function Primary() {
     return (
         <div>
-            <Featured/>
-            {Array.from({ length: 10 }, (_, index) => (
+          <Featured title='k;jhasdkh;dfbksdbfsdbfdbb dsfbsd sdf sdfob'desc='he;;sakdjfsdad sad;fnds'category='tech'linkurl='https://hytek.org.in'img='/assets/images/avatar.jpeg'imgdesc='sdsadsad' tags={['hello','a']} />
+            {Array.from({ length: 1 }, (_, index) => (
                 <div key={index}><div className="w-full py-20 lg:py-40">
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2">

@@ -10,6 +10,7 @@ import Image from 'next/image'
 import React from 'react'
 import myFaqs from '@/public/assets/data/Insights/faq.json'
 import updates from '@/public/assets/data/Insights/Insights.json'
+import projects from '@/public/assets/data/works/projects.json'
 
 export default function page() {
   const fadeInUp = {
@@ -122,7 +123,7 @@ export default function page() {
       <section >
         <Insights
           posts={updates.posts}
-          projects={updates.projects}
+          projects={projects}
           events={updates.events}
           others={updates.others}
         />

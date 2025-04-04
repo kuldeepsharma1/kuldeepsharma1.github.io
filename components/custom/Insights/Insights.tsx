@@ -16,16 +16,155 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { InsightsData, Other, Event, Post, Project } from '@/types/Insights';
+import { InsightsData, Other, Event, Post } from '@/types/Insights';
 import FallbackImage from '../FallbackImg';
+import { DeveloperProject } from '@/types/works';
+import Link from 'next/link';
 gsap.registerPlugin(ScrollTrigger, CustomEase, TextPlugin, Flip);
 CustomEase.create("customBounce", "M0,0 C0.14,0 0.27,0.06 0.32,0.87 0.35,1 0.4,1 1,1");
 
-interface ItemCardProps {
-    item: Post | Project | Event | Other;
+interface ProjectItemCardProps {
+    item: DeveloperProject;
     ctaText: string;
     isListView?: boolean;
 }
+interface ItemCardProps {
+    item: Post | Event | Other;
+    ctaText: string;
+    isListView?: boolean;
+}
+const ProjectCard: React.FC<ProjectItemCardProps> = ({ item, ctaText, isListView }) => {
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (cardRef.current) {
+            const card = cardRef.current;
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+            // Set initial state
+            gsap.set(card, { autoAlpha: 0, scale: 0.8 });
+            // Animate entrance
+            timeline
+                .to(card, {
+                    duration: 0.8,
+                    autoAlpha: 1,
+                    scale: 1,
+                    ease: "customBounce",
+                    clearProps: "scale"
+                })
+                .from(card.querySelector("h3") as Element, {
+                    duration: 0.6,
+                    y: 30,
+                    autoAlpha: 0,
+                    ease: "power3.out"
+                }, "-=0.4")
+                .from(card.querySelector("p") as Element, {
+                    duration: 0.6,
+                    y: 20,
+                    autoAlpha: 0,
+                    ease: "power2.out"
+                }, "-=0.3")
+                .from(card.querySelector("a") as Element, {
+                    duration: 0.4,
+                    x: -20,
+                    autoAlpha: 0,
+                    ease: "back.out(1.7)"
+                }, "-=0.2");
+
+            // Hover effect for image if available
+            if (item.images.thumbnail) {
+                const imageContainer = card.querySelector(".image-container");
+                if (imageContainer) {
+                    const hoverTween = gsap.to(imageContainer, {
+                        scale: 1.1,
+                        duration: 0.4,
+                        ease: "power2.out",
+                        paused: true
+                    });
+                    card.addEventListener("mouseenter", () => hoverTween.play());
+                    card.addEventListener("mouseleave", () => hoverTween.reverse());
+                }
+            }
+        }
+    }, []);
+
+    return (
+        <div
+            ref={cardRef}
+            className={`group bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 rounded-2xl overflow-hidden border border-neutral-200/50 dark:border-neutral-800/50 hover:shadow-2xl hover:shadow-neutral-300/10 dark:hover:shadow-neutral-800/10 transition-all duration-500 ${isListView ? 'flex flex-row gap-8' : 'flex flex-col'
+                }`}
+        >
+            {item.images.thumbnail && (
+                <div className={`overflow-hidden ${isListView ? 'w-80 h-52' : 'aspect-[16/9]'}`}>
+                    <div className="relative h-full w-full">
+                        {item.images.thumbnail ? (
+                            <Image
+                                fill
+                                src={item.images.thumbnail}
+                                alt={item.title}
+                                className="object-cover transition duration-700 group-hover:scale-105 group-hover:brightness-110"
+                                sizes={isListView ? "320px" : "(max-width: 768px) 100vw, 50vw"}
+                                priority
+                            />
+                        ) : (
+                            <FallbackImage alt={item.title} />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                </div>
+            )}
+            <div className="flex-1 p-8">
+                <div className="flex items-center gap-3 mb-4 ">
+                    {'category' in item && item.category && (
+                        <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
+                            <Tag className='size-2.5 mr-1' />    {item.category}
+                        </Badge>
+                    )}
+                    {item.releaseDate && (
+                        <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center">
+                            <Calendar1 className="w-3 h-3 mr-1 stroke-2" />
+                            {item.releaseDate}
+                        </span>
+                    )}
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-neutral-900 dark:text-neutral-100">
+                    {item.title}
+                </h3>
+                {item.description && (
+                    <p className="text-neutral-600 dark:text-neutral-300 text-sm leading-relaxed line-clamp-2">
+                        {item.description}
+                    </p>
+                )}
+                <div className='flex flex-row flex-wrap justify-between items-center space-y-4 mt-4'>
+                    {item.technologies && (
+                        <div className="flex flex-wrap gap-2 mt-4">
+                            {item.technologies.map((t, i) => (
+                                <Badge key={i} variant={'outline'}>
+                                    {t}
+                                </Badge>
+                            ))}
+                        </div>
+                    )}
+
+                    {item.links.source && (
+                        <Link
+                            href={`/works/${item.slug}`}
+                            className=" text-sm font-medium ">
+                            <span className='hover:underline underline-offset-4'>{ctaText}</span>
+                            <span className="ml-1 transition-transform group-hover:translate-x-1 ">→</span>
+                        </Link>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+};
 const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
     const { title, img, link } = item;
     const desc = 'desc' in item ? item.desc : null;
@@ -115,7 +254,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                 </div>
             )}
             <div className="flex-1 p-8">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-4 ">
                     {'category' in item && item.category && (
                         <Badge variant="secondary" className="text-xs font-medium px-3 py-1">
                             <Tag className='size-2.5 mr-1' />    {item.category}
@@ -137,34 +276,27 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, ctaText, isListView }) => {
                     </p>
                 )}
                 <div className='flex flex-row flex-wrap justify-between items-center space-y-4 mt-4'>
-                    {'tech' in item && item.tech && (
-                        <div className="flex flex-wrap gap-2 mt-4">
-                            {item.tech.map((t, i) => (
-                                <Badge key={i} variant={'outline'}>
-                                    {t}
-                                </Badge>
-                            ))}
-                        </div>
-                    )}
-                    {'readTime' in item && item.readTime && (
-                        <TooltipProvider>
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center transition-colors hover:text-neutral-700 dark:hover:text-neutral-200">
-                                        <Clock2 className="w-3 h-3 mr-1 stroke-2 text-neutral-600 dark:text-neutral-300" />
-                                        {item.readTime}
-                                    </span>
-                                </TooltipTrigger>
-                                <TooltipContent className="w-auto  rounded-full shadow-md bg-white dark:bg-zinc-800 text-sm text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-zinc-700">
-                                    <div className="flex items-center space-x-2">
-                                        <Clock2 className="w-4 h-4 text-neutral-600 dark:text-neutral-300" />
-                                        <p className="font-medium">Time to Read This</p>
-                                    </div>
+                    <div>
+                        {'readTime' in item && item.readTime && (
+                            <TooltipProvider>
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center transition-colors hover:text-neutral-700 dark:hover:text-neutral-200">
+                                            <Clock2 className="w-3 h-3 mr-1 stroke-2 text-neutral-600 dark:text-neutral-300" />
+                                            {item.readTime}
+                                        </span>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="w-auto  rounded-full shadow-md bg-white dark:bg-zinc-800 text-sm text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-zinc-700">
+                                        <div className="flex items-center space-x-2">
+                                            <Clock2 className="w-4 h-4 text-neutral-600 dark:text-neutral-300" />
+                                            <p className="font-medium">Time to Read This</p>
+                                        </div>
 
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
-                    )}
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                        )}
+                    </div>
                     {link && (
                         <a
                             href={link}
@@ -317,7 +449,7 @@ export default function Insights({ posts, projects, events, others }: InsightsDa
                                         <SkeletonLoader key={`skeleton-post-${idx}`} isListView={isListView} />
                                     ))
                                 ) : projects.length > 0 ? projects.map((project, idx) => (
-                                    <ItemCard key={`project-${idx}`} item={project} ctaText="View Project" isListView={isListView} />
+                                    <ProjectCard key={`project-${idx}`} item={project} ctaText="View Project" isListView={isListView} />
                                 )) : (
                                     <p className="col-span-full text-center text-zinc-500 dark:text-zinc-400 py-8">
                                         No projects showcased currently.

@@ -29,6 +29,7 @@ export default function page() {
         title="Want to collaborate on something amazing?"
         description="I&apos;m always open to working on innovative projects in machine learning, AI, and software development. Whether it&apos;s a startup idea, a research project, or a side hustle, let&apos;s build something great together."
         readMoreLink="/insights"
+        readMoreLinkText='View Insights'
         contactLink="/contact"
       />
     </div>
