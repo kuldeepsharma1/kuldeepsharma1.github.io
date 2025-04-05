@@ -25,17 +25,17 @@ export default function AboutPage() {
                 }
             />
             <Main data={aboutData} />
-            <div className="mt-16">
-                <Cta
-                    badgeText="Let's Collaborate"
-                    title="Ready to Build Something Great?"
-                    description="I’m excited to work on innovative projects in software development and open-source."
-                    readMoreLink={aboutData.contact_information.website}
-                    readMoreLinkText="Explore My Work"
-                    contactLink={aboutData.contact_information.contact_form}
 
-                />
-            </div>
+            <Cta
+                badgeText="Let's Collaborate"
+                title="Ready to Build Something Great?"
+                description="I’m excited to work on innovative projects in software development and open-source."
+                readMoreLink={aboutData.contact_information.website}
+                readMoreLinkText="Explore My Work"
+                contactLink={aboutData.contact_information.contact_form}
+
+            />
+
         </div >
     );
 }

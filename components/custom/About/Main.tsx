@@ -47,7 +47,7 @@ export default function Main({data}:{data:About}) {
         return () => ctx.revert();
     }, []);
     return (
-        <div ref={mainRef} className="container mx-auto px-4 py-16 max-w-7xl">
+        <div ref={mainRef} className="container mx-auto px-4 pt-16 max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 {/* Left Column - Profile */}
                 <Left personal_info={data.personal_info} professional_summary={data.professional_summary} contact_information={data.contact_information} social_media_and_networks={data.social_media_and_networks} />
