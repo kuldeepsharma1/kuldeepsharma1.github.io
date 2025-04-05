@@ -10,6 +10,8 @@ import { useGSAP } from "@gsap/react";
 import BlogContent from "@/components/custom/About/BlogContent";
 import Left from "@/components/custom/About/Left";
 import Right from "@/components/custom/About/Right";
+import EduAndCert from "@/components/custom/About/EduAndCert";
+import Timeline from "@/components/custom/About/Timeline";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,33 +84,12 @@ export default function AboutPage() {
                 </div>
                 <section>
                     <div className="grid lg:grid-cols-2">
-                        <Section title="Education">
-                            <div className="mb-4 text-zinc-700 dark:text-zinc-300">
-                                <p className="font-semibold text-lg text-black dark:text-white">{data.education.degree}</p>
-                                <p className="text-sm text-zinc-500 dark:text-zinc-400">{data.education.university} - {data.education.graduation_year}</p>
-                                <p className="text-sm mt-2">{data.education.details}</p>
-                            </div>
-                            <div className="mt-4 text-zinc-600 dark:text-zinc-400">
-                                <h4 className="font-semibold text-md mb-2 text-black dark:text-white">Courses:</h4>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                                    {data.education.additional_courses.map((course) => (
-                                        <p key={course.name}>{course.name} - {course.provider} ({course.year})</p>
-                                    ))}
-                                </div>
-                            </div>
-                        </Section>
-                        {/* https://animata.design/docs/carousel/expandable */}
-                        <Section title="Certifications" variant="grid">
-                            {data.certifications.map((cert) => (
-                                <p key={cert.name} className="text-sm text-zinc-600 dark:text-zinc-400">
-                                    <span className="font-semibold text-black dark:text-white">{cert.name}</span> - {cert.issuer} ({cert.year})
-                                </p>
-                            ))}
-                        </Section>
+                      <EduAndCert education={data.education}certifications={data.certifications} />
 
                     </div>
                     <BlogContent technical_contributions={data.technical_contributions} blogging_and_content={data.blogging_and_content} open_source_and_community={data.open_source_and_community} personal_interests={data.personal_interests} personal_philosophy={data.personal_philosophy} />
                 </section>
+                <Timeline  timeline={data.additional_details.timelines}/>
                 <div className="mt-16">
                     <Cta
                         badgeText="Let's Collaborate"

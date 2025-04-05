@@ -67,6 +67,7 @@ export interface WorkExperience {
 
 export interface TechnicalContributions {
   apps: App[];
+  websites: Website[];
   github_repositories: GithubRepository[];
 }
 
@@ -77,7 +78,16 @@ export interface App {
   platform?: string;
   installs?: string;
   rating?: string;
-  repository: string;
+  repository?: string;
+  last_updated: string;
+  awards?: string[];
+  status?: string;
+}
+export interface Website {
+  name: string;
+  description: string;
+  technologies: string[];
+  repository?: string;
   last_updated: string;
   awards?: string[];
   status?: string;

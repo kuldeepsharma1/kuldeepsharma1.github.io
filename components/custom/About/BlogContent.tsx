@@ -18,13 +18,28 @@ export default function BlogContent({ technical_contributions, blogging_and_cont
           {technical_contributions.apps.map((app) => (
             <div key={app.name} className="mb-4">
               <Link
-                href={app.repository}
+                href={app.repository?app.repository:''}
                 target="_blank"
                 className=" hover:underline font-medium text-black dark:text-white"
               >
                 {app.name}
               </Link>{" "}
               - {app.description} ({app.technologies.join(", ")})
+            </div>
+          ))}
+        </div>
+        <div className="mb-4 text-zinc-700 dark:text-zinc-300">
+          <h4 className="font-semibold text-lg mb-2 text-black dark:text-white">Websites:</h4>
+          {technical_contributions.websites.map((web) => (
+            <div key={web.name} className="mb-4">
+              <Link
+                href={web.repository?web.repository:''}
+                target="_blank"
+                className=" hover:underline font-medium text-black dark:text-white"
+              >
+                {web.name}
+              </Link>{" "}
+              - {web.description} ({web.technologies.join(", ")})
             </div>
           ))}
         </div>

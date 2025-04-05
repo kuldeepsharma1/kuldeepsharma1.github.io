@@ -139,6 +139,16 @@
         "status": "In Development"
       }
     ],
+    "websites": [
+      {
+        "name": "Rize Web",
+        "description": "A productivity app designed to help users combat procrastination and manage tasks effectively with features like Pomodoro timers and goal tracking.",
+        "technologies": ["TypeScript", "React Native", "Redux"],
+        "repository": "https://github.com/hytek-org/Rize",
+        "last_updated": "2025-02-18",
+        "awards": ["Best Productivity App - Hytek Innovation Awards 2024"]
+      }
+    ],
     "github_repositories": [
       {
         "name": "Portfolio",
