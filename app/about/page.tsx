@@ -21,12 +21,7 @@ export default function AboutPage() {
 
     useGSAP(() => {
         const ctx = gsap.context(() => {
-            gsap.from(".profile-section", {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                ease: "power3.out",
-            });
+     
 
             gsap.from(".featured-stagger li", {
                 scrollTrigger: {

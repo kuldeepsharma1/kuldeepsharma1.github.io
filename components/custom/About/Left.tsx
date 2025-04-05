@@ -31,7 +31,7 @@ interface Left {
 
 export default function Left({ personal_info, social_media_and_networks,professional_summary,contact_information }: Left) {
     return (
-        <div className="profile-section lg:col-span-4 lg:sticky lg:top-16">
+        <div className=" section-animate lg:col-span-4 lg:sticky lg:top-16">
             <div className="mb-8 rounded-xl overflow-hidden shadow-lg border border-zinc-200 dark:border-zinc-800">
                 <Image
                     width={400}
