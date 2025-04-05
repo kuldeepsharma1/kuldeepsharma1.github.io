@@ -10,7 +10,7 @@ export default function Page() {
   const workItems = projects.filter((item) => item.type === 'work') as DeveloperProject[]
   const personalItems = projects.filter((item) => item.type === 'personal') as DeveloperProject[]
   return (
-    <div>
+    <div className='max-w-7xl mx-auto'>
       <TabSwitch
         index={3}
         primaryTab={{

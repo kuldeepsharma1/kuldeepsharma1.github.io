@@ -1,0 +1,365 @@
+{
+    "personal_info": {
+      "full_name": "Kuldeep Sharma",
+      "aliases": [
+        "kuldeepsharma1",
+        "kuldeep_sharma_2022",
+        "kuldeepit1"
+      ],
+      "title": "Software Engineer & Community Advocate",
+      "profile_summary": "A seasoned software engineer with over 7 years of experience in crafting innovative solutions across mobile, web, and open-source domains. Kuldeep is deeply passionate about harnessing technology to address real-world challenges, mentoring emerging talent, and fostering inclusive tech communities worldwide.",
+      "location": "India",
+      "languages": [
+        "English (Fluent)",
+        "Hindi (Native)"
+      ]
+    },
+    "professional_summary": {
+      "current_position": "Software Engineer at Hytek Org",
+      "description": "Kuldeep Sharma serves as a pivotal Software Engineer at Hytek Org, a dynamic community dedicated to advancing open-source innovation. With a strong foundation in computer science, he excels in designing scalable applications, leading technical initiatives, and mentoring peers. His work bridges technical expertise with community-driven impact, making him a key contributor to Hytek’s mission.",
+      "key_strengths": [
+        "Full-stack Development",
+        "Mobile and Web Application Development",
+        "Open-source Contributions",
+        "Community Leadership",
+        "Data Science & Machine Learning",
+        "Agile Methodologies",
+        "Technical Writing",
+        "Cross-functional Collaboration"
+      ],
+      "years_of_experience": 7
+    },
+    "education": {
+      "degree": "B.Tech in Computer Science",
+      "university": "XYZ University",
+      "details": "Graduated with honors, specializing in software engineering, algorithms, data structures, and system design. Actively participated in coding clubs and hackathons, winning multiple awards for innovative projects.",
+      "graduation_year": 2018,
+      "additional_courses": [
+        {
+          "name": "Machine Learning Specialization",
+          "provider": "Coursera",
+          "year": 2021
+        },
+        {
+          "name": "Advanced React and Redux",
+          "provider": "Udemy",
+          "year": 2022
+        }
+      ]
+    },
+    "certifications": [
+      {
+        "name": "Certified Scrum Master (CSM)",
+        "issuer": "Scrum Alliance",
+        "year": 2022,
+        "description": "Demonstrates proficiency in agile methodologies and scrum practices, enhancing project management skills."
+      },
+      {
+        "name": "AWS Certified Developer – Associate",
+        "issuer": "Amazon Web Services",
+        "year": 2023,
+        "description": "Validates expertise in developing and maintaining applications on the AWS platform."
+      },
+      {
+        "name": "Google Cloud Professional Data Engineer",
+        "issuer": "Google Cloud",
+        "year": 2024,
+        "description": "Certifies skills in designing and managing data processing systems on Google Cloud."
+      },
+      {
+        "name": "Microsoft Certified: Azure Fundamentals",
+        "issuer": "Microsoft",
+        "year": 2021,
+        "description": "Foundational certification in cloud concepts, Azure services, and workloads."
+      },
+      {
+        "name": "Oracle Certified Professional, Java SE Programmer",
+        "issuer": "Oracle",
+        "year": 2019,
+        "description": "Recognizes advanced proficiency in Java programming and software development."
+      },
+      {
+        "name": "Certified Ethical Hacker (CEH)",
+        "issuer": "EC-Council",
+        "year": 2023,
+        "description": "Demonstrates knowledge of cybersecurity principles and ethical hacking techniques."
+      }
+    ],
+    "work_experience": [
+      {
+        "company": "ABC Company",
+        "role": "Junior Developer",
+        "duration": "2018-2020",
+        "responsibilities": [
+          "Developed responsive web applications using HTML, CSS, and JavaScript.",
+          "Assisted in backend development with Node.js and MySQL.",
+          "Collaborated with cross-functional teams to deliver software solutions on time.",
+          "Adopted agile methodologies, enhancing team productivity."
+        ],
+        "achievements": [
+          "Reduced application load time by 20% through optimization techniques."
+        ]
+      },
+      {
+        "company": "Hytek Org",
+        "role": "Software Engineer",
+        "duration": "2020-Present",
+        "responsibilities": [
+          "Architect and develop cutting-edge applications like Rize and ImageNet.",
+          "Spearhead open-source projects, driving adoption and contributions globally.",
+          "Collaborate with international teams to refine product features and usability.",
+          "Mentor junior developers, fostering a culture of learning and innovation.",
+          "Organize workshops and hackathons to upskill community members."
+        ],
+        "achievements": [
+          "Led Rize to achieve 3000+ installs with a 5.0 rating on Google Play.",
+          "Increased Hytek Org’s GitHub repository activity by 40% through active contributions."
+        ]
+      }
+    ],
+    "technical_contributions": {
+      "apps": [
+        {
+          "name": "Rize",
+          "description": "A productivity app designed to help users combat procrastination and manage tasks effectively with features like Pomodoro timers and goal tracking.",
+          "technologies": [
+            "TypeScript",
+            "React Native",
+            "Redux"
+          ],
+          "platform": "Google Play",
+          "installs": "3000+",
+          "rating": "5.0",
+          "repository": "https://github.com/hytek-org/Rize",
+          "last_updated": "2025-02-18",
+          "awards": [
+            "Best Productivity App - Hytek Innovation Awards 2024"
+          ]
+        },
+        {
+          "name": "ImageNet",
+          "description": "An image search and download app optimized for efficient retrieval, featuring advanced filtering and batch processing capabilities.",
+          "technologies": [
+            "React Native",
+            "Expo",
+            "Firebase"
+          ],
+          "repository": "https://github.com/hytek-org/ImageNet",
+          "last_updated": "2024-07-21"
+        },
+        {
+          "name": "TaskSync",
+          "description": "A cross-platform task synchronization tool integrating with calendar apps for seamless workflow management.",
+          "technologies": [
+            "Flutter",
+            "Dart",
+            "Google APIs"
+          ],
+          "repository": "https://github.com/kuldeepsharma1/TaskSync",
+          "last_updated": "2025-01-10",
+          "status": "In Development"
+        }
+      ],
+      "github_repositories": [
+        {
+          "name": "Portfolio",
+          "description": "A customizable CSS-based portfolio template showcasing personal projects and technical skills.",
+          "language": "CSS",
+          "stars": 2,
+          "license": "Apache-2.0",
+          "last_updated": "2023-11-05"
+        },
+        {
+          "name": "CS",
+          "description": "An HTML project demonstrating foundational web development concepts.",
+          "language": "HTML",
+          "stars": 1,
+          "license": "MIT",
+          "last_updated": "2022-09-10"
+        },
+        {
+          "name": "ipost",
+          "description": "A blog platform built with Laravel and Tailwind CSS, designed for sharing technical insights.",
+          "language": "Blade",
+          "stars": 1,
+          "license": "MIT",
+          "last_updated": "2023-06-05"
+        },
+        {
+          "name": "contact_keeper",
+          "description": "A TypeScript-based contact management tool with secure data handling.",
+          "language": "TypeScript",
+          "stars": 0,
+          "license": "Apache-2.0",
+          "last_updated": "2024-05-29"
+        },
+        {
+          "name": "clubquiz",
+          "description": "A quiz app built with Blade, offering interactive learning experiences.",
+          "language": "Blade",
+          "stars": 1,
+          "license": "GPL-3.0",
+          "last_updated": "2024-03-17"
+        },
+        {
+          "name": "iowned",
+          "description": "A JavaScript project for managing digital assets and personal projects.",
+          "language": "JavaScript",
+          "stars": 1,
+          "license": "MIT",
+          "last_updated": "2023-09-29"
+        },
+        {
+          "name": "hytek",
+          "description": "A foundational JavaScript project supporting Hytek Org’s community initiatives.",
+          "language": "JavaScript",
+          "stars": 0,
+          "license": "Apache-2.0",
+          "last_updated": "2023-05-09"
+        },
+        {
+          "name": "CodeMentor",
+          "description": "A platform to connect mentors and mentees in the tech community, built with Next.js.",
+          "language": "JavaScript",
+          "stars": 3,
+          "license": "MIT",
+          "last_updated": "2025-03-15"
+        }
+      ]
+    },
+    "blogging_and_content": {
+      "platforms": [
+        {
+          "name": "IPOST",
+          "url": "https://ipost.hytek.org.in/",
+          "topics": [
+            "Proxy Servers",
+            "Machine Learning",
+            "Career Planning",
+            "Open-source Best Practices",
+            "App Development Trends"
+          ],
+          "recent_activity": "Active within the last year",
+          "post_count": 25
+        },
+        {
+          "name": "Hytek Code Blog",
+          "url": "https://hytek.code.blog",
+          "topics": [
+            "Coding Tutorials",
+            "Tech Reviews"
+          ],
+          "recent_activity": "Activity details not fully accessible",
+          "post_count": 10
+        },
+        {
+          "name": "Medium",
+          "url": "https://medium.com/@kuldeepsharma22",
+          "topics": [
+            "Software Engineering",
+            "Personal Growth",
+            "Tech Leadership"
+          ],
+          "recent_activity": "Published 5 articles in 2024",
+          "followers": 150
+        }
+      ]
+    },
+    "open_source_and_community": {
+      "open_source_contributions": {
+        "organization": "Hytek Org",
+        "github_url": "https://github.com/hytek-org",
+        "role": "Core Contributor & Project Lead",
+        "mission": "To empower tech enthusiasts through sustainable, inclusive, and innovative open-source initiatives.",
+        "contributions": [
+          "Authored 200+ commits across Hytek repositories.",
+          "Initiated the Rize project, now a flagship app for the organization."
+        ]
+      },
+      "community_involvement": {
+        "roles": [
+          "Contributor",
+          "Mentor",
+          "Community Leader",
+          "Event Organizer"
+        ],
+        "activities": [
+          "Hosted 10+ tech webinars reaching 500+ participants.",
+          "Organized annual Hytek Hackathon with 100+ attendees.",
+          "Shared knowledge via blogging and social media platforms.",
+          "Collaborated with global developer communities like GitHub and Stack Overflow."
+        ],
+        "awards": [
+          "Community Champion - Hytek Org 2023",
+          "Open Source Advocate - Tech Summit 2024"
+        ]
+      }
+    },
+    "social_media_and_networks": {
+      "linkedin": "https://www.linkedin.com/in/kuldeepsharma22/",
+      "twitter_x": "https://x.com/kuldeepit1",
+      "instagram": "https://www.instagram.com/kuldeep_sharma_2022/",
+      "kaggle": "https://www.kaggle.com/kuldeep108",
+      "google_play": "https://play.google.com/store/apps/dev?id=8294544331694313336&hl=en_US",
+      "stackoverflow": "https://stackoverflow.com/users/kuldeepsharma1",
+      "medium": "https://medium.com/@kuldeepsharma22"
+    },
+    "personal_philosophy": {
+      "mission_statement": "Fueled by a relentless passion for technology, Kuldeep strives to build impactful solutions through open-source collaboration, mentor the next generation of developers, and create a legacy of innovation and empowerment.",
+      "core_values": [
+        "Innovation",
+        "Collaboration",
+        "Transparency",
+        "Continuous Learning",
+        "Community Empowerment",
+        "Integrity",
+        "Adaptability"
+      ],
+      "vision": "To cultivate a global network of tech innovators where creativity, inclusivity, and functionality converge to solve pressing challenges and inspire lifelong learning."
+    },
+    "personal_interests": {
+      "hobbies": [
+        "Competitive Programming",
+        "Photography",
+        "Reading Tech Journals",
+        "Traveling"
+      ],
+      "favorite_books": [
+        "Clean Code by Robert C. Martin",
+        "The Pragmatic Programmer by Andrew Hunt and David Thomas"
+      ],
+      "side_projects": [
+        {
+          "name": "AI Chatbot",
+          "description": "A personal project exploring natural language processing with Python and TensorFlow.",
+          "status": "In Progress"
+        }
+      ]
+    },
+    "additional_details": {
+      "aliases_and_usernames": {
+        "github": "kuldeepsharma1",
+        "linkedin": "kuldeepsharma22",
+        "twitter": "kuldeepit1",
+        "kaggle": "kuldeep108"
+      },
+      "timeline": {
+        "2018": "Started career as a Junior Developer at ABC Company",
+        "2020": "Joined Hytek Org as a Software Engineer",
+        "2021": "Completed Machine Learning Specialization, began blogging on IPOST",
+        "2023": "Launched Rize and expanded GitHub contributions",
+        "2024": "Updated ImageNet and initiated CodeMentor project",
+        "2025": "Released TaskSync and latest Rize updates in February"
+      },
+      "metadata": {
+        "last_updated": "2025-03-27",
+        "version": "1.2"
+      }
+    },
+    "contact_information": {
+      "email": "Not publicly disclosed",
+      "phone": "Not publicly disclosed",
+      "website": "https://hytek.org.in/",
+      "contact_form": "https://hytek.org.in/contact"
+    }
+  }

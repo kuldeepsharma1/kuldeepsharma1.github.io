@@ -43,7 +43,7 @@ export default function RootLayout({
         >
            <ScrollProgress />
           <TransitionWrapper>
-          <div className="max-w-7xl mx-auto">
+          <main>
             <header className="px-2 pt-2.5 " >
               <Header />
             </header>
@@ -55,7 +55,7 @@ export default function RootLayout({
             <footer>
               <Footer />
             </footer>
-          </div>
+          </main>
           </TransitionWrapper>
         </ThemeProvider>
       </body>

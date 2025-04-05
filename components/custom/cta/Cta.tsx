@@ -13,7 +13,7 @@ interface CtaProps {
 }
 const Cta: React.FC<CtaProps> = ({ title, description, readMoreLink, readMoreLinkText, contactLink, badgeText }) => {
   return (
-    <section>
+    <section className='max-w-7xl mx-auto'>
       <div className="w-full py-20 lg:py-40 ">
         <div className="mx-auto">
 
@@ -38,7 +38,7 @@ const Cta: React.FC<CtaProps> = ({ title, description, readMoreLink, readMoreLin
               </Link>
             </div>
           </div>
-          <div className='mx-auto  h-[1px] animate-border-width  rounded-full bg-gradient-to-r from-[rgba(77,77,77,0)] dark:from-[rgba(17,17,17,0)] dark:via-white via-black to-[rgba(77,77,77,0)] dark:to-[rgba(17,17,17,0)] transition-all duration-1000' />
+        
         </div>
       </div>
     </section>

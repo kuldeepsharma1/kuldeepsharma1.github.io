@@ -50,7 +50,7 @@ export default function Contact() {
   }
 
   return (
-    <div>
+    <div className="max-w-7xl mx-auto">
 
       <TabSwitch
         index={5}
@@ -189,7 +189,7 @@ export default function Contact() {
         }
       />
 
-      <section className="px-4 py-10">
+      <section className="px-4 py-10 ">
         <Updates title="View My Latest Insights" posts={limitedInsights} />
       </section>
     </div>

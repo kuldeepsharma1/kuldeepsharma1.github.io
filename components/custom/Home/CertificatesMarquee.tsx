@@ -1,5 +1,6 @@
 import { Marquee } from '@/components/ui/marquee';
-import React from 'react'
+import Image from 'next/image';
+
 const logos = [
   {
     name: "ISRO",
@@ -56,15 +57,10 @@ export default function CertificatesMarquee() {
       <div className="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden   bg-background  md:shadow-xl">
         <div className="flex flex-row gap-4 [perspective:1000px]">
           <Marquee
-            className="h-96 justify-center overflow-hidden [--duration:60s] [--gap:1rem]"
-
-          // style={{
-          //   transform:
-          //     "translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(10deg) scale(1.5)",
-          // }}
+            className="h-52 justify-center overflow-hidden [--duration:60s] [--gap:1.5rem]"
           >
             {logos.map((data, idx) => (
-              <img
+              <Image width={600} height={400}
                 key={idx}
                 src={data.img}
                 alt={data.name}
