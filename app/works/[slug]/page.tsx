@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import projects from '@/public/assets/data/works/projects.json';
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ChevronLeft, Globe2 } from 'lucide-react';
+import type { Metadata } from 'next'
+
+type Props = {
+    params: { slug: string };
+};
 
 export async function generateStaticParams() {
     return projects.map((post) => ({
@@ -21,12 +22,32 @@ const ProjectDetail = ({ label, value }: { label: string; value: string }) => (
         }</span>
     </div>
 );
-
-export default async function Page({
-    params,
-}: {
-    params: { slug: string }
-}) {
+export const generateMetadata = async (
+    { params }: Props,
+): Promise<Metadata> => {
+    const { slug } = params;
+    const project = projects.find((p) => p.slug === slug);
+    if (!project) {
+        return {
+            title: "Project Not Found",
+            robots: {
+                index: false,
+                follow: false,
+            },
+        };
+    }
+    return {
+        title: project.title,
+        description: project.description,
+        openGraph: {
+            title: project.title,
+            description: project.description,
+            url: `/works/${slug}`,
+            images: [project.images.thumbnail],
+        },
+    };
+};
+export default async function Page({ params }: Props) {
     const { slug } = params
     const project = projects.find((p) => p.slug === slug)
 
