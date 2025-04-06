@@ -227,11 +227,11 @@ const InsightsPreview = () => {
 
 export default function Main() {
     return (
-        <>
-            <Hero name="Kuldeep Sharma"role="Software developer"desc="hello i am here" />
+        <div>
+            <Hero name="Kuldeep Sharma" role="Software developer" desc="hello i am here" />
 
-            <AboutMeSnippet /> 
-             <div className='max-w-6xl mx-auto'>
+            <AboutMeSnippet />
+            <div className='max-w-6xl mx-auto'>
                 <Skill />
             </div>
             <WorksPreview />
@@ -239,6 +239,6 @@ export default function Main() {
 
 
             <InsightsPreview />
-        </>
+        </div>
     )
 }
