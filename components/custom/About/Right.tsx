@@ -2,6 +2,7 @@ import React from 'react'
 import Section from './Section'
 import { Check, Languages, ShieldCheck, Sparkles } from 'lucide-react'
 import { PersonalInfo, ProfessionalSummary, WorkExperience } from '@/types/about'
+import Skill from '../Home/Skill';
 interface Right {
   personal_info: PersonalInfo;
   professional_summary: ProfessionalSummary;
@@ -39,6 +40,7 @@ export default function Right({ personal_info, professional_summary, work_experi
 
 
       </Section>
+      <Skill />
       <Section title="Work Experience">
         {work_experience.map((work) => (
           <div key={work.company} className="mb-8 last:mb-0 p-4 rounded-lg bg-zinc-50 dark:bg-black/50 border border-zinc-200 dark:border-zinc-800 shadow-sm">
