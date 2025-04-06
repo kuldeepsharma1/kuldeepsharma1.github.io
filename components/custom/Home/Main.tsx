@@ -1,46 +1,13 @@
 'use client'
 
-import { ArrowRight, ExternalLink, Mail } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { GithubIcon } from "../icon";
 import CertificatesMarquee from "./CertificatesMarquee";
 import Skill from "./Skill";
-import { GridBeam } from "../GridBeam";
+import Hero from "./Hero";
 
-const HeroSection = () => (
-    <section className="relative flex items-center justify-center min-h-screen py-32 md:py-40  text-center overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10 max-w-3xl">
-
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 text-zinc-900 dark:text-white !leading-tight tracking-tight">
-                John Doe
-            </h1>
-            <h2 className="text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 mb-10">
-                Software Engineer & Web Architect
-            </h2>
-            <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 mb-12 max-w-xl mx-auto leading-relaxed">
-                Building clean, performant, and user-centered digital experiences with a focus on modern web technologies.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <Link
-                    href="/works"
-
-                    className="group w-full sm:w-auto px-7 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black text-base font-medium rounded-md shadow-sm hover:bg-zinc-700 dark:hover:bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 dark:focus:ring-offset-black transition-colors duration-200 ease-in-out flex items-center justify-center gap-2"
-                >
-                    View Projects <ArrowRight className="inline h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </Link>
-                <Link
-                    href="/contact"
-
-                    className="group w-full sm:w-auto px-7 py-3 bg-transparent text-zinc-700 dark:text-zinc-300 text-base font-medium rounded-md border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2 dark:focus:ring-offset-black transition-colors duration-200 ease-in-out flex items-center justify-center gap-2"
-                >
-                    Contact Me <Mail className="inline h-4 w-4" />
-                </Link>
-            </div>
-        </div>
-        <div className="absolute inset-0 -z-10 h-full w-full  bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff20_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    </section>
-);
 
 
 const AboutMeSnippet = () => (
@@ -50,7 +17,7 @@ const AboutMeSnippet = () => (
                 <div className="md:col-span-1 relative aspect-[3/4] rounded-lg overflow-hidden group border border-zinc-200 dark:border-zinc-800">
 
                     <Image
-                        src="/images/placeholder-avatar.jpg"
+                        src="/assets/images/avatar.jpeg"
                         alt="Portrait of John Doe"
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
@@ -165,7 +132,7 @@ const WorksPreview = () => {
                             </div>
                             <div className="mt-3 flex items-center text-sm font-medium text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-800 dark:group-hover:text-zinc-200 transition-colors duration-200">
                                 View Project <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                                {project.codeHref && project.codeHref !== '#' && <GithubIcon  />}
+                                {project.codeHref && project.codeHref !== '#' && <GithubIcon />}
                                 {project.liveHref && project.liveHref !== '#' && <ExternalLink className="ml-2 h-4 w-4" />}
                             </div>
                         </Link>
@@ -199,25 +166,6 @@ const CertificatesSection = () => {
     );
 };
 
-const SocialProof = () => (
-    <section className="py-20 md:py-24 ">
-        <div className="container mx-auto px-6 max-w-4xl">
-            <h2 className="text-xl font-medium text-center mb-12 text-zinc-500 dark:text-zinc-400 tracking-tight">
-                Trusted by / Collaborated With
-            </h2>
-
-            <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-8 md:gap-x-16 opacity-60 dark:opacity-50">
-                <Image width={32} height={15} src="/assets/images/my.png" alt="Client Logo 1" className="h-8" />
-                <Image width={32} height={15} src="/assets/images/my.png" alt="Client Logo 1" className="h-8" />
-                <Image width={32} height={15} src="/assets/images/my.png" alt="Client Logo 1" className="h-8" />
-                <Image width={32} height={15} src="/assets/images/my.png" alt="Client Logo 1" className="h-8" />
-                <Image width={32} height={15} src="/assets/images/my.png" alt="Client Logo 1" className="h-8" />
-            </div>
-
-
-        </div>
-    </section>
-);
 
 
 const InsightsPreview = () => {
@@ -279,27 +227,18 @@ const InsightsPreview = () => {
 
 export default function Main() {
     return (
-     <>
-      <HeroSection />
-        <div className="w-full h-[400px] dark:bg-grid-white/[0.05] bg-grid-black/[0.07]">
-          <GridBeam className="sm:pl-16 pt-28 pl-4 flex items-start justify-start">
-            <div className="grid gap-2">
-              <h1 className="sm:text-5xl text-4xl font-bold max-w-sm">Hero Section That Converts.</h1>
-              <p className="text-neutral-500 max-w-lg">
-                Beautiful beam which I btw reverse engineered from Aceternity
-              </p>
-            </div>
-          </GridBeam>
-        </div>
-        <AboutMeSnippet />
-        <div className='max-w-6xl mx-auto'>
-          <Skill />
-        </div>
-        <WorksPreview />
-        <CertificatesSection />
+        <>
+            <Hero name="Kuldeep Sharma"role="Software developer"desc="hello i am here" />
 
-        <SocialProof />
-        <InsightsPreview />
-     </>
+            <AboutMeSnippet /> 
+             <div className='max-w-6xl mx-auto'>
+                <Skill />
+            </div>
+            <WorksPreview />
+            <CertificatesSection />
+
+
+            <InsightsPreview />
+        </>
     )
 }
