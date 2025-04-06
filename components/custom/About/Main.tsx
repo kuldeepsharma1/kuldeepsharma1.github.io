@@ -3,14 +3,15 @@ import { useGSAP } from "@gsap/react";
 import BlogContent from "@/components/custom/About/BlogContent";
 import Left from "@/components/custom/About/Left";
 import Right from "@/components/custom/About/Right";
-import EduAndCert from "@/components/custom/About/EduAndCert";
+import Education from "@/components/custom/About/Education";
 import Timeline from "@/components/custom/About/Timeline";
 import { useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { About } from "@/types/about";
+import Certifications from "./Certifications";
 gsap.registerPlugin(ScrollTrigger);
-export default function Main({data}:{data:About}) {
+export default function Main({ data }: { data: About }) {
     const mainRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
@@ -49,19 +50,14 @@ export default function Main({data}:{data:About}) {
     return (
         <div ref={mainRef} className="container mx-auto px-4 pt-16 max-w-7xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                {/* Left Column - Profile */}
                 <Left personal_info={data.personal_info} professional_summary={data.professional_summary} contact_information={data.contact_information} social_media_and_networks={data.social_media_and_networks} />
-
-                {/* Right Column - Content */}
                 <div className="lg:col-span-8 space-y-8 pb-10">
                     <Right personal_info={data.personal_info} professional_summary={data.professional_summary} work_experience={data.work_experience} />
                 </div>
             </div>
             <section>
-                <div className="grid lg:grid-cols-2">
-                    <EduAndCert education={data.education} certifications={data.certifications} />
-
-                </div>
+                <Education education={data.education} />
+                <Certifications certifications={data.certifications} />
                 <BlogContent technical_contributions={data.technical_contributions} blogging_and_content={data.blogging_and_content} open_source_and_community={data.open_source_and_community} personal_interests={data.personal_interests} personal_philosophy={data.personal_philosophy} />
             </section>
             <Timeline timeline={data.additional_details.timelines} />

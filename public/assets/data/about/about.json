@@ -45,37 +45,37 @@
       "name": "Certified Scrum Master (CSM)",
       "issuer": "Scrum Alliance",
       "year": 2022,
-      "description": "Demonstrates proficiency in agile methodologies and scrum practices, enhancing project management skills."
+      "image": "/assets/images/avatar.jpeg"
     },
     {
       "name": "AWS Certified Developer – Associate",
       "issuer": "Amazon Web Services",
       "year": 2023,
-      "description": "Validates expertise in developing and maintaining applications on the AWS platform."
+      "image": "/assets/images/avatar.jpeg"
     },
     {
       "name": "Google Cloud Professional Data Engineer",
       "issuer": "Google Cloud",
       "year": 2024,
-      "description": "Certifies skills in designing and managing data processing systems on Google Cloud."
+      "image": "/assets/images/avatar.jpeg"
     },
     {
       "name": "Microsoft Certified: Azure Fundamentals",
       "issuer": "Microsoft",
       "year": 2021,
-      "description": "Foundational certification in cloud concepts, Azure services, and workloads."
+      "image": "/assets/images/avatar.jpeg"
     },
     {
       "name": "Oracle Certified Professional, Java SE Programmer",
       "issuer": "Oracle",
       "year": 2019,
-      "description": "Recognizes advanced proficiency in Java programming and software development."
+      "image": "/assets/images/avatar.jpeg"
     },
     {
       "name": "Certified Ethical Hacker (CEH)",
       "issuer": "EC-Council",
       "year": 2023,
-      "description": "Demonstrates knowledge of cybersecurity principles and ethical hacking techniques."
+      "image": "/assets/images/avatar.jpeg"
     }
   ],
   "work_experience": [
