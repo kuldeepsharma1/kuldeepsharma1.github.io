@@ -1,7 +1,8 @@
 'use client';
 import { ArrowRight, Mail } from 'lucide-react';
 import Link from 'next/link';
-import { Beam } from '../Beam';
+import Beam from '../Beam';
+
 
 export default function Hero({ name, role, desc }: { name: string, role: string, desc: string }) {
     return (

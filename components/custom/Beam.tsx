@@ -16,14 +16,14 @@ interface BeamProps {
   className?: string;
 }
 
-export const Beam: React.FC<BeamProps> = ({
+export default function Beam({
   direction,
   size = 'medium',
   colorStart = '#18CCFC',
   colorMiddle = '#6344F5',
   colorEnd = '#AE48FF',
   className,
-}) => {
+}: BeamProps) {
   const getTransform = (): string => {
     switch (direction) {
       case 'top':
@@ -89,7 +89,7 @@ export const Beam: React.FC<BeamProps> = ({
             repeat: Infinity,
             repeatType: 'loop',
             ease: 'easeInOut',
-         
+
           }}
         >
           <stop stopColor={colorStart} stopOpacity="0" />
@@ -100,4 +100,4 @@ export const Beam: React.FC<BeamProps> = ({
       </defs>
     </svg>
   );
-};
+}
