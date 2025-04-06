@@ -31,14 +31,14 @@ export default function TabSwitch({
       <section className="py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-12 gap-4">
-            {/* Index Number */}
+        
             <div className="col-span-1 pt-2 sm:pt-20">
               <span className="text-2xl font-medium text-black/80 dark:text-white/80">
                 {formattedIndex}
               </span>
             </div>
 
-            {/* Tabs */}
+         
             <div className="col-span-full pt-10 flex flex-col justify-center items-center sm:flex-row gap-6 sm:gap-10">
               <div className="flex flex-col">
                 <button

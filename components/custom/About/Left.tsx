@@ -64,8 +64,8 @@ export default function Left({ personal_info, social_media_and_networks,professi
                     {social_media_and_networks.github && (
                         <LinkIcon href={social_media_and_networks.github} Icon={GithubIcon} />
                     )}
-                    {social_media_and_networks.twitter_x && (
-                        <LinkIcon href={social_media_and_networks.twitter_x} Icon={InstaIcon} />
+                    {social_media_and_networks.instagram && (
+                        <LinkIcon href={social_media_and_networks.instagram} Icon={InstaIcon} />
                     )}
                     {social_media_and_networks.linkedin && (
                         <LinkIcon href={social_media_and_networks.linkedin} Icon={LinkedinIcon} />

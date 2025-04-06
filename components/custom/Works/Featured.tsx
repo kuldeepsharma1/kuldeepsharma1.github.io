@@ -76,7 +76,7 @@ export default function Featured({ category, title, desc, tags, linkurl, linktex
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-24 md:pt-36 lg:pt-48">
+    <section ref={sectionRef}>
       <div className="max-w-screen-xl mx-auto px-6  py-16 md:py-24">
         <div className="flex flex-col-reverse lg:flex-row justify-between border-2 border-black/25 dark:border-white/25  rounded-3xl bg-white dark:bg-black shadow-3xl transition-all duration-500 hover:shadow-4xl sm:py-4">
           <div className="lg:w-1/2 px-4 pb-6 sm:p-8  flex flex-col justify-between">

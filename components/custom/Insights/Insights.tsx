@@ -389,7 +389,7 @@ export default function Insights({ posts, projects, events, others }: InsightsDa
                     <h2 className="text-4xl md:text-7xl pb-1.5 font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400">
                         Insights
                     </h2>
-                    <div className="flex items-center gap-2  rounded-lg p-1">
+                    <div className="hidden md:flex items-center gap-2  rounded-lg p-1">
                         <button
                             onClick={() => setIsListView(false)}
                             className={`p-2 rounded ${!isListView ? 'bg-white dark:bg-zinc-700 shadow-sm' : ''}`}

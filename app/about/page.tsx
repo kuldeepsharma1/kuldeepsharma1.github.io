@@ -25,7 +25,6 @@ export default function AboutPage() {
                 }
             />
             <Main data={aboutData} />
-
             <Cta
                 badgeText="Let's Collaborate"
                 title="Ready to Build Something Great?"
@@ -33,9 +32,7 @@ export default function AboutPage() {
                 readMoreLink={aboutData.contact_information.website}
                 readMoreLinkText="Explore My Work"
                 contactLink={aboutData.contact_information.contact_form}
-
             />
-
         </div >
     );
 }
