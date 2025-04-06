@@ -19,7 +19,7 @@ export default function Skill() {
     ];
     return (
         <Section title="Skills & Technologies" desc="My toolkit for building robust and efficient applications." >
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-8 ">
                     {skills.map((skill, index) => (
                         <div key={index} className="flex items-center gap-3 group">
                             <skill.icon className="w-6 h-6 flex-shrink-0 text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-200" />
