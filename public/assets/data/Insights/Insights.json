@@ -1,0 +1,73 @@
+{
+  "posts": [
+    {
+      "title": "The Thinking Rock: How We Turn a Rock into a Computer Brain",
+      "desc": "Ever wonder how a simple rock becomes the brain of your computer? Discover the fun, easy steps from sand to silicon that power our digital world.",
+      "category": "Technology",
+      "readTime": "10",
+      "img": "https://ipost.hytek.org.in/storage/images/posts/the-thinking-rock-how-we-turn-a-rock-into-a-computer-brain.jpg",
+      "link": "https://ipost.hytek.org.in/posts/the-thinking-rock-how-we-turn-a-rock-into-a-computer-brain",
+      "date": "2025-03-24"
+    },
+    {
+      "title": "React 18 Features",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "#",
+      "date": "20 days"
+    },
+    {
+      "title": "Best Practices for JavaScript",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "#",
+      "date": "20 days"
+    },
+    {
+      "title": "Introduction to Next.js",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "#",
+      "date": "20 days"
+    }
+  ],
+  "events": [
+    {
+      "title": "ReactJS Conference",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "#",
+      "date": "20 days"
+    },
+    {
+      "title": "Frontend Masters Workshop",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "#",
+      "date": "20 days"
+    },
+    {
+      "title": "JavaScript Meetup",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "#",
+      "date": "20 days"
+    }
+  ],
+  "others": [
+    {
+      "title": "GitHub Repo",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "https://github.com/",
+      "date": "20 days"
+    },
+    {
+      "title": "LinkedIn Profile",
+      "desc": "hello this is demo",
+      "img": "/assets/images/avatar.jpeg",
+      "link": "https://www.linkedin.com/",
+      "date": "20 days"
+    }
+  ]
+}

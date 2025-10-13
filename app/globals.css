@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
+@plugin 'tailwindcss-animate';
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -120,3 +121,203 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* Add custom selection styles */
+::selection {
+  background-color: var(--selection-bg-dark);
+  color: var(--selection-color-dark);
+}
+
+.dark ::selection {
+  background-color: var(--selection-bg-light);
+  color: var(--selection-color-light);
+}
+
+
+
+/* Helper classes to use the variables with hsl() like in your config */
+.bg-custom {
+  background-color: hsl(var(--background));
+}
+.text-custom {
+  color: hsl(var(--foreground));
+}
+
+
+/* === Container override (center & padding and 2xl screen width 1400px) === */
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* match the 2xl screen value you set in config */
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1400px; /* matches "2xl": "1400px" */
+  }
+}
+
+/* You might want the other container breakpoints too — optional */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+/* === Border radius overrides (ensure project uses same radius values) ===
+   These override default Tailwind rounded-* classes by re-defining them
+   after @tailwind utilities (we are after it). Use !important to be sure. */
+.rounded-lg {
+  border-radius: var(--radius) !important;
+}
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px) !important;
+}
+.rounded-sm {
+  border-radius: calc(var(--radius) - 4px) !important;
+}
+
+/* === Background image alias from your config:
+   'my' => url('https://images.pexels.com/photos/...') */
+.bg-my {
+  background-image: url('https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+  background-position: center;
+}
+
+/* === bg-grid: generate an SVG data-URI that uses currentColor (so stroke = element color)
+   This is the practical replacement for your matchUtilities mini-svg-data-uri output.
+   To change the grid color, give the element a text color or style color:
+     <div class="bg-grid text-indigo-500">...</div>
+   or inline: <div class="bg-grid" style="color:#f00">...</div>
+*/
+.bg-grid {
+  /* We put stroke="currentColor" so the SVG stroke matches the element's color */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='currentColor'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 32px 32px;
+  /* background-clip or position can be adjusted if needed */
+}
+
+/* If you want an opaque/light grid you can combine with opacity utilities or CSS variable:
+   Example: .bg-grid[data-opacity="10"] { background-image: url(... with stroke-opacity=0.1 ... ) }
+   But the currentColor approach keeps it simple and composable. */
+
+/* === Keyframes from your config === */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes ripple {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(0.9); }
+}
+@keyframes spin-around {
+  0% { transform: translateZ(0) rotate(0); }
+  15%, 35% { transform: translateZ(0) rotate(90deg); }
+  65%, 85% { transform: translateZ(0) rotate(270deg); }
+  100% { transform: translateZ(0) rotate(360deg); }
+}
+@keyframes shimmer-slide {
+  to { transform: translate(calc(100cqw - 100%), 0); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
+}
+@keyframes border-width {
+  from { width: 20%; opacity: 0; }
+  to { width: 40%; opacity: 1; }
+}
+@keyframes background-shine {
+  from { background-position: 0 0; }
+  to { background-position: -200% 0; }
+}
+
+/* === Animation utility classes (names match your Tailwind config) ===
+   You can use these classes directly, e.g. <div class="animate-accordion-down"> */
+.animate-accordion-down { animation: accordion-down 0.2s ease-out; }
+.animate-accordion-up   { animation: accordion-up 0.2s ease-out; }
+
+.ripple {
+  animation: ripple var(--duration, 2s) ease calc(var(--i, 0) * .2s) infinite;
+}
+
+/* shimmer-slide expects --speed */
+.animate-shimmer-slide { animation: shimmer-slide var(--speed, 2s) ease-in-out infinite alternate; }
+
+/* spin-around expects --speed */
+.animate-spin-around { animation: spin-around calc(var(--speed, 1s) * 2) infinite linear; }
+
+.animate-marquee { animation: marquee var(--duration, 10s) linear infinite; }
+.animate-marquee-vertical { animation: marquee-vertical var(--duration, 10s) linear infinite; }
+
+.animate-border-width { animation: border-width 3s infinite alternate; }
+
+.animate-background-shine-once { animation: background-shine 2s linear; }
+
+/* === Small helpers / notes ===
+   - The ripple animation above expects you to position the element so the translate(-50%,-50%) centers properly.
+   - The accordion keyframes rely on the variable --radix-accordion-content-height (that's from Radix UI).
+   - For marquee and marquee-vertical set --gap on the element, e.g. style="--gap: 1rem" if you want spacing between repeats.
+*/
+
+/* === Optional: Convenience classes mapping HSL CSS variables to the same names you used in Tailwind config
+   This helps if you have some global CSS that calls hsl(var(--primary)) etc (as in your original config). */
+.theme-primary-bg { background-color: hsl(var(--primary)); }
+.theme-primary-foreground { color: hsl(var(--primary-foreground)); }
+
+.theme-muted { background-color: hsl(var(--muted)); color: hsl(var(--muted-foreground)); }
+
+
+
+@layer utilities {
+  .animate-background-shine-once {
+    animation: background-shine 2s linear;
+  }
+
+  .hover\:animate-background-shine:hover {
+    animation: background-shine 2s linear infinite;
+  }
+
+  .hover\:animate-background-shine-once:hover {
+    animation: background-shine 2s linear;
+  }
+
+  .focus\:animate-background-shine-once:focus {
+    animation: background-shine 2s linear;
+  }
+
+  .active\:animate-background-shine-once:active {
+    animation: background-shine 2s linear;
+  }
+
+  .group:hover .group-hover\:animate-background-shine-once {
+    animation: background-shine 2s linear;
+  }
+
+   /* Ripple Animation */
+  .ripple {
+    animation: ripple var(--duration, 2s) ease calc(var(--i, 0) * .2s) infinite;
+  }
+  .hover\:ripple:hover {
+    animation: ripple var(--duration, 2s) ease calc(var(--i, 0) * .2s) infinite;
+  }
+}
+
